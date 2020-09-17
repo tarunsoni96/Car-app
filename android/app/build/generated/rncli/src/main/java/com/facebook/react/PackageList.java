@@ -50,6 +50,8 @@ import com.BV.LinearGradient.LinearGradientPackage;
 import com.rnnestedscrollview.RNNestedScrollViewPackage;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
+// react-native-sim-data
+import eu.sigrlami.rnsimdata.RNSimDataReactPackage;
 // react-native-sms
 import com.tkporter.sendsms.SendSMSPackage;
 // react-native-snackbar
@@ -127,6 +129,7 @@ public class PackageList {
       new LinearGradientPackage(),
       new RNNestedScrollViewPackage(),
       new ReanimatedPackage(),
+      new RNSimDataReactPackage(),
       SendSMSPackage.getInstance(),
       new SnackbarPackage(),
       new SplashScreenReactPackage(),

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, ImageBackground } from "react-native";
+import { StyleSheet,TouchableOpacity, View, ImageBackground } from "react-native";
 import Container from "AppLevelComponents/UI/Container";
 import NoHorizontalMarginView from "AppLevelComponents/UI/NoHorizontalMarginView";
 import {
@@ -44,7 +44,7 @@ class Header extends Component {
               height: hideBG ? undefined : commonVal,
               top: 0,
               left: 0,
-              paddingVertical: 10,
+              paddingVertical: 40,
               paddingHorizontal: 14,
               ...headerContainerStyle,
             }}
@@ -52,27 +52,19 @@ class Header extends Component {
           >
         
             <View style={styles.headerTop}>
-              {!hideBack &&
-                (x ? (
-                  <Icons
-                    lib="AntDesign"
-                    color="#616161"
-                    // style={{marginLeft:-4}}
-                    onPress={() => this.props.navigation.pop()}
-                    size={25}
-                    name={"close"}
-                  />
-                ) : (
-                  <SvgButton
-                    svg={backBtn}
-                    size={20}
-                    onPress={() => onBack ? onBack() : this.props.navigation.pop()}
-                  />
-                ))}
+            {!hideBack ? 
+                    
+              <TouchableOpacity style={{width:40,height:40,}}  onPress={() => onBack ? onBack() : this.props.navigation.pop()}>
 
-              {
-                this.props.children //rightView
-              }
+                  <Icons
+                    lib="Entypo"
+                    color="#040714"
+                    size={33}
+                    name={"chevron-left"}
+                  />
+              </TouchableOpacity>
+                  :null
+            }
             </View>
 
             {!hideTitle && (
@@ -80,10 +72,11 @@ class Header extends Component {
                 // font={Fonts.semiBold}
                 text={title || "Header Title"}
                 style={{
-                  marginLeft:2,
-                  fontFamily:Fonts.regular,
-                  color: "#212121",
-                  fontSize: widthPercentageToDP(7),
+                  marginLeft:7,
+                  marginTop:12,
+                  fontFamily:Fonts.bold,
+                  color: "#040714",
+                  fontSize: 23,
                 }}
               />
             )}

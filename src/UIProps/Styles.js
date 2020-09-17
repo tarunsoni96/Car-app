@@ -24,12 +24,13 @@ export let inputErrorStyle = {
 
 
 export const inputContainerStyle = {
-  borderBottomWidth: 1,
-  marginLeft: 0,
-  top: 10,
-  paddingBottom:10,
-  borderColor: "#fff",
-  borderRadius:20,
+  flex:1,
+  borderRadius:8,
+  height:50,
+  fontSize:17,
+  color:'#040714',
+  textAlign:'center',
+  fontFamily:Fonts.medium,
   backgroundColor:'#fff',
 };
 

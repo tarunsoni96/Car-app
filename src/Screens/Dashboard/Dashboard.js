@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Image, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import CustomText from "AppLevelComponents/UI/CustomText";
 import Container from "AppLevelComponents/UI/Container";
 import Fonts from "UIProps/Fonts";
 import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
+import LinearGradient from "react-native-linear-gradient";
+
 import HelperMethods from "../../Helpers/Methods";
 import SubHeader from "../../AppLevelComponents/UI/SubHeader";
 import MobxStore from "StorageHelpers/MobxStore";
@@ -15,14 +17,12 @@ import { FlatList } from "react-native";
 import { Card } from "react-native-elements";
 import Icons from "AppLevelComponents/UI/Icons";
 import { Colors } from "UIProps/Colors";
-import { TouchableWithoutFeedback } from "react-native";
-import { SafeAreaView } from "react-native";
-import FirstName from "AppLevelComponents/UI/FormInputs/FirstName";
-import CardSwiper from "AppLevelComponents/UI/CardSwiper";
+import Header from "AppLevelComponents/UI/Header";
 import { ImageBackground } from "react-native";
 import NoHorizontalMarginView from "AppLevelComponents/UI/NoHorizontalMarginView";
-import { widthPercentageToDP } from "react-native-responsive-screen";
+import CardSwiper from "AppLevelComponents/UI/CardSwiper";
 import CustomButton from "AppLevelComponents/UI/CustomButton";
+import { TouchableWithoutFeedback } from "react-native";
 
 let dummyTutors = [
   {
@@ -52,87 +52,166 @@ let dummyTutors = [
     price: `${"\u20B9"} 2,000`,
     userImage: "https://www.techvrm.com/Transporter/assets/dist/img/m1.png",
   },
+
+  {
+    instituteName: "Maruti driving school",
+    carImage: require("assets/img/car.png"),
+    price: `${"\u20B9"} 2,000`,
+    userImage: "https://www.techvrm.com/Transporter/assets/dist/img/m1.png",
+  },
+
+  {
+    instituteName: "Maruti driving school",
+    carImage: require("assets/img/car.png"),
+    price: `${"\u20B9"} 2,000`,
+    userImage: "https://www.techvrm.com/Transporter/assets/dist/img/m1.png",
+  },
+
+  {
+    instituteName: "Maruti driving school",
+    carImage: require("assets/img/car.png"),
+    price: `${"\u20B9"} 2,000`,
+    userImage: "https://www.techvrm.com/Transporter/assets/dist/img/m1.png",
+  },
+
+  {
+    instituteName: "EOD",
+  },
+
 ];
 
 @observer
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+
+    this.inputValObj = {};
     this.state = {
-      data: [],
       isApiCall: false,
+      showWhiteInput: true,
     };
   }
-
-  getData = () => {};
-
-  onRefresh = () => {};
 
   onBackPress = () => {
     HelperMethods.appExitPrompter();
   };
 
-  componentDidMount() {
-    this.fetchHotels();
+  componentDidMount() {}
+
+  setGlobalRef(ref) {
+    if (!this.vpRef) {
+      this.vpRef = ref;
+      this.forceUpdate();
+    }
   }
 
-  fetchHotels() {
-    this.setState({ isApiCall: true });
-    apiFuncGet("hotels")
-      .then((resp) => {
-        this.setState({ isApiCall: false, data: resp });
-      })
-      .catch((err) => {
-        this.setState({ isApiCall: "failed" });
-      });
+  onPressLeft(){
+    this.caraousal.snapToPrev()
   }
+
+  onPressRight(){
+    this.caraousal.snapToNext()
+  }
+
 
   render() {
     return (
       <Container
         scrollEnabled={false}
         safeAreaColor={Colors.screenBG}
-        onBackPress={this.onBackPress}
         showHeader={false}
-        contentStyle={{ backgroundColor: "#FAFAFF" }}
       >
-        <NoHorizontalMarginView verticalAlso style={{}}>
-          <ImageBackground
-            source={require("assets/img/carimg.png")}
-            style={{
-              width: global.deviceWidth,
-              height: widthPercentageToDP(70),
-              marginTop: 0,
-              padding: global.contentPadding,
-            }}
-            resizeMode="cover"
-          >
-            <CustomText text="Welcome to" />
-            <CustomText text="Driving School" size={35} font={Fonts.heavy} />
-          </ImageBackground>
-        </NoHorizontalMarginView>
-
-        <View style={{ marginTop: 70, flex: 1 }}>
-          <FirstName />
-          <CustomButton text="Get Started" gradColor='#6C63FF' onPress={()=>this.props.navigation.navigate('DashboardDesign2')} containerStyle={{ marginTop: 30 }} />
-        </View>
-
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space-between",
           }}
         >
-          <CustomText
-            text="Have an account?"
-            style={{ alignSelf: "center", marginBottom: 40 }}
-          />
-          <CustomText
-            text=" Log In"
-            style={{ color: "#6C63FF", marginBottom: 40 }}
-          />
+          <Header title="Driving schools." hideBack />
+        <TouchableWithoutFeedback onPress={()=>this.props.navigation.navigate('OnboardingStack')} >
+
+          <View style={{ alignItems: "center" }}>
+            <Image
+              source={require("assets/img/location.png")}
+              style={{ width: 30, height: 30 }}
+              resizeMode="contain"
+            />
+            <CustomText font={Fonts.semiBold} text="Noida" color="#444B65" />
+          </View>
+          </TouchableWithoutFeedback>
         </View>
+        <NoHorizontalMarginView style={{ flex: 1 }}>
+          <ImageBackground
+            source={require("assets/img/dashboardBG.png")}
+            style={{ flex: 1 }}
+            imageStyle={{ marginLeft: 0 }}
+            resizeMode="cover"
+          >
+            <CardSwiper setRef={ref => this.caraousal = ref} data={dummyTutors} />
+
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                paddingHorizontal: global.contentPadding,
+              }}
+            >
+              <CustomButton
+                lib={"Entypo"}
+                size={30}
+                btnStyle={{
+                  backgroundColor: "#fff",
+                  borderWidth: 1,
+                  borderColor: "#C9C9C9",
+                }}
+                iconColor="#040714"
+                round
+                press={()=>this.onPressLeft()}
+                icon={"chevron-left"}
+              />
+              <View
+                style={{
+                  borderRadius: 90,
+                  backgroundColor: "#040714",
+                  paddingHorizontal: 20,
+                  padding: 13,
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Icons
+                  lib="Feather"
+                  name="bookmark"
+                  color={Colors.buttonText}
+                  size={18}
+                />
+
+                <CustomText
+                  text="Add to Shortlist"
+                  color={Colors.buttonText}
+                  style={{ marginLeft: 15 }}
+                  size={14}
+                />
+              </View>
+              <CustomButton
+                press={()=>this.onPressRight()}
+
+                lib={"Entypo"}
+                size={30}
+                btnStyle={{
+                  backgroundColor: "#fff",
+                  borderWidth: 1,
+                  borderColor: "#C9C9C9",
+                }}
+                iconColor="#040714"
+                round
+                icon={"chevron-right"}
+              />
+            </View>
+          </ImageBackground>
+        </NoHorizontalMarginView>
       </Container>
     );
   }

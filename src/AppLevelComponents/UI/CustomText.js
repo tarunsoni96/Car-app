@@ -19,6 +19,7 @@ export default class CustomText extends Component {
       textAlign,
       type,
       color,
+      marginTop,
       font,
       padding,
       numberOfLines,
@@ -44,10 +45,11 @@ export default class CustomText extends Component {
               style={[
                 styles.text,
                 {
-                  fontSize:size || 20,
+                  fontSize:size || 17,
                   color: color || Colors.textPrimary,
                   top:-1,
-                  fontFamily: font ||Fonts.regular,
+                  fontFamily: font ||Fonts.bold,
+                  marginTop:marginTop || 0,
                   textAlign: textAlign ,
                   ...style
                 }

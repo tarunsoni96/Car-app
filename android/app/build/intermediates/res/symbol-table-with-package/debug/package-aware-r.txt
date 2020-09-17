@@ -1856,6 +1856,7 @@ string fab_transformation_sheet_behavior
 string facebook_app_id
 string fb_login_protocol_scheme
 string fcm_fallback_notification_channel_label
+string gcm_fallback_notification_channel_label
 string header_description
 string hide_bottom_view_on_scroll_behavior
 string image_description

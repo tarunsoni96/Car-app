@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Keyboard, Text, TouchableWithoutFeedback } from "react-native";
+import { Keyboard,View, TouchableWithoutFeedback } from "react-native";
 import EStyleSheet from "react-native-extended-stylesheet";
 import CustomText from "AppLevelComponents/UI/CustomText";
 import * as Animatable from "react-native-animatable";
@@ -16,19 +16,20 @@ import {
   widthPercentageToDP,
 } from "react-native-responsive-screen";
 import Loader from "./Loader";
+import Icons from "./Icons";
 
 export default class CustomButton extends Component {
   state = {
     animation: "",
   };
   onPress() {
-    let { onPress } = this.props;
-    if (!onPress) {
+    let { press } = this.props;
+    Keyboard.dismiss();
+    if (!press) {
       alert("Provide onpress prop");
       return;
     }
-    onPress();
-    Keyboard.dismiss();
+    press();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,7 +39,7 @@ export default class CustomButton extends Component {
 
 
   renderNormal() {
-    let { text, containerStyle, gradStyle,gradColor, half, isApiCall } = this.props;
+    let { text, containerStyle,round,icon, btnStyle,iconColor, half, isApiCall } = this.props;
     return (
       <Animatable.View
         animation={this.state.animation}
@@ -46,38 +47,34 @@ export default class CustomButton extends Component {
         duration={600}
         style={[
           {
-            width: "100%",
             ...containerStyle,
           },
           half && { width: widthPercentageToDP(38), alignSelf: "flex-end",borderRadius:10 },
         ]}
       >
         <TouchableWithoutFeedback onPress={() => this.onPress()}>
-          <LinearGradient
-            useAngle={true}
-            angle={180}
-            angleCenter={{ x: 0.25, y: 0.25 }}
-            colors={[gradColor,gradColor]}
-            style={[
-              styles.btn,
-              {
-                padding: widthPercentageToDP(4),
-                alignItems: "center",
-                ...gradStyle,
-              },
-            ]}
+          <View
+            style={[round ?  styles.rountBtn : styles.btn,btnStyle]}
           >
             {isApiCall ? (
               <Loader  color={"#fff"} />
-            ) : (
+            ) : <>
+
+            {round ? 
+            
+            <Icons lib={icon == 'check' ? 'Feather' : 'Entypo' }  name={icon || 'chevron-thin-right'} color={iconColor || '#D1E3E4'} {...this.props} />
+            
+            :
               <CustomText
-                font={Fonts.nunito.regular}
+                font={Fonts.semiBold}
                 text={text || "Button"}
                 size={wp(4.8)}
                 color="#fff"
               />
-            )}
-          </LinearGradient>
+            }
+              </>
+            }
+          </View>
         </TouchableWithoutFeedback>
       </Animatable.View>
     );
@@ -102,4 +99,14 @@ const styles = EStyleSheet.create({
     borderRadius: 12,
 
   },
+
+  rountBtn:{
+      width:  50,
+      height: 50,
+      elevation:5,
+      borderRadius: 100 / 2,
+      backgroundColor: "#040714",
+      alignItems: "center",
+      justifyContent: "center"
+  }
 });

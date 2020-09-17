@@ -102,6 +102,7 @@ export default class Container extends Component {
         )}
         <KeyboardAwareScrollView
           behavior="padding"
+          // extraScrollHeight={100}
           refreshControl={
             onRefresh && (
               <RefreshControl
@@ -121,7 +122,7 @@ export default class Container extends Component {
               marginBottom: showGradient ? widthPercentageToDP(30) : 0,
               flex: 1,
             }}
-          >
+        >
             {this.props.children}
           </View>
         </KeyboardAwareScrollView>

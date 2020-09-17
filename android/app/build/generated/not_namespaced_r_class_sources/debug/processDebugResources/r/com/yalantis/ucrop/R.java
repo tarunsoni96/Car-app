@@ -1023,16 +1023,16 @@ public final class R {
         public static final int abc_shareactionprovider_share_with = 0x7f100019;
         public static final int abc_shareactionprovider_share_with_application = 0x7f10001a;
         public static final int abc_toolbar_collapse_description = 0x7f10001b;
-        public static final int search_menu_title = 0x7f100083;
-        public static final int status_bar_notification_info_overflow = 0x7f10008b;
-        public static final int ucrop_crop = 0x7f100090;
-        public static final int ucrop_error_input_data_is_absent = 0x7f100091;
-        public static final int ucrop_label_edit_photo = 0x7f100092;
-        public static final int ucrop_label_original = 0x7f100093;
-        public static final int ucrop_menu_crop = 0x7f100094;
-        public static final int ucrop_mutate_exception_hint = 0x7f100095;
-        public static final int ucrop_rotate = 0x7f100096;
-        public static final int ucrop_scale = 0x7f100097;
+        public static final int search_menu_title = 0x7f100084;
+        public static final int status_bar_notification_info_overflow = 0x7f10008c;
+        public static final int ucrop_crop = 0x7f100091;
+        public static final int ucrop_error_input_data_is_absent = 0x7f100092;
+        public static final int ucrop_label_edit_photo = 0x7f100093;
+        public static final int ucrop_label_original = 0x7f100094;
+        public static final int ucrop_menu_crop = 0x7f100095;
+        public static final int ucrop_mutate_exception_hint = 0x7f100096;
+        public static final int ucrop_rotate = 0x7f100097;
+        public static final int ucrop_scale = 0x7f100098;
     }
     public static final class style {
         private style() {}

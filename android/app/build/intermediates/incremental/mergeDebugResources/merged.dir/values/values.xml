@@ -127,7 +127,7 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="catalyst_redbox_background">#eecc0000</color>
-    <color name="colorAccent">#F18926</color>
+    <color name="colorAccent">#FFE200</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="com_facebook_blue">#1877F2</color>
@@ -727,6 +727,7 @@
     <string name="facebook_app_id">767976760301446</string>
     <string name="fb_login_protocol_scheme">fb767976760301446</string>
     <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
+    <string name="gcm_fallback_notification_channel_label">Miscellaneous</string>
     <string name="header_description" translatable="false">Heading</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string name="image_description" translatable="false">Image</string>

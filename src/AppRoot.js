@@ -1,18 +1,15 @@
 import React, { Component, Fragment } from "react";
-import { View, StatusBar, Animated,Easing } from "react-native";
+import { Text, View, StatusBar, Image, Keyboard } from "react-native";
 import { Colors } from "UIProps/Colors";
-import {
-  createStackNavigator,
-  createAppContainer,
-} from "react-navigation";
-import Icons from 'AppLevelComponents/UI/Icons'
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import Icons from "AppLevelComponents/UI/Icons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import "Helpers/global";
 import {
   createFluidNavigator,
   Transition as fluidTransition,
-  FluidNavigator
+  FluidNavigator,
 } from "react-navigation-fluid-transitions";
 import EStyleSheet from "react-native-extended-stylesheet";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
@@ -21,23 +18,32 @@ import {
   zoomIn,
   fromBottom,
   fromLeft,
-  fromRight
+  fromRight,
 } from "react-navigation-transitions";
 import Login from "Screens/Login/Login";
 import ForgotPassword from "Screens/ForgotPassword/ForgotPassword";
 import ResetPassword from "Screens/ResetPassword/ResetPassword";
-import Dashboard from "Screens/Dashboard/Dashboard";
 import Shopping from "Screens/Shopping/Shopping";
 import Summary from "Screens/Summary/Summary";
-import DashboardDesign2 from "Screens/Dashboard/DashboardDesign2";
+import DashboardDesign from "Screens/Dashboard/Dashboard";
+import MobileScreen from "Screens/Onboarding/Onboarding";
+import OnboardingOTP from "Screens/Onboarding/OnboardingOTP";
+import OnboardingUserSelection from "Screens/Onboarding/OnboardingUserSelection";
+import CustomText from "AppLevelComponents/UI/CustomText";
+import Fonts from "UIProps/Fonts";
+import Profile from "Screens/Profile/Profile";
 
 let transitionSpeed = 650;
-let tabIconSize = 18;
+let tabIconSize = 27;
+
+let svgSize = 26;
+let activeColor = Colors.textPrimary;
+let inactiveColor = "#777F9C";
+let colors = { dash: { color: activeColor } };
 
 const transitionConfig = {
   duration: 500,
 };
-
 
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
@@ -60,48 +66,188 @@ const handleCustomTransition = ({ scenes }) => {
   return fromRight(transitionSpeed);
 };
 
-const LoginStack = createStackNavigator({
-  login: {
-    screen: Login,
-    navigationOptions: {
-      header: null
-    }
-  },
-
-  forgotPassword: {
-    screen: ForgotPassword,
-  },
-
-  resetPassword: {
-    screen: ResetPassword,
-  }
-
-},{
-  // initialRouteName:'resetPassword',
-  headerMode:'none'
-});
-
-
-const DashboardStack = createStackNavigator(
+const LoginStack = createStackNavigator(
   {
-    dashboard:Dashboard,
-    DashboardDesign2,
-    Shopping,
-    Summary,
+    login: {
+      screen: Login,
+      navigationOptions: {
+        header: null,
+      },
+    },
+
+    forgotPassword: {
+      screen: ForgotPassword,
+    },
+
+    resetPassword: {
+      screen: ResetPassword,
+    },
   },
   {
-    headerMode:'none',
-    transitionConfig: nav => handleCustomTransition(nav)
+    // initialRouteName:'resetPassword',
+    headerMode: "none",
   }
 );
 
-const TopLevelNavigator = createAnimatedSwitchNavigator(
+const OnboardingStack = createStackNavigator(
   {
-    DashboardStack,
-    LoginStack,
+    MobileScreen,
   },
   {
-    //The previous screen will slide to the bottom while the next screen will fade in
+    headerMode: "none",
+    transitionConfig: (nav) => handleCustomTransition(nav),
+  }
+);
+
+const DashboardStack = createStackNavigator(
+  {
+    DashboardDesign,
+  },
+  {
+    headerMode: "none",
+    transitionConfig: (nav) => handleCustomTransition(nav),
+  }
+);
+
+const ProfileStack = createStackNavigator(
+  {
+    Profile,
+  },
+  {
+    headerMode: "none",
+    transitionConfig: (nav) => handleCustomTransition(nav),
+  }
+);
+
+const ShortlistStack = createStackNavigator(
+  {
+    Profile,
+  },
+  {
+    headerMode: "none",
+    transitionConfig: (nav) => handleCustomTransition(nav),
+  }
+);
+
+const InsideApp = createMaterialBottomTabNavigator(
+  {
+    Shortlist: {
+      screen: ShortlistStack,
+      navigationOptions: {
+        tabBarLabel: (
+          <CustomText
+            text="Shortlist"
+            color={colors["shortlist"]?.color || inactiveColor}
+            size={15}
+            font={colors["shortlist"]?.color ? Fonts.bold : Fonts.semiBold}
+          />
+        ),
+
+        tabBarOnPress: () => {
+          Keyboard.dismiss();
+          colors = [];
+          colors["shortlist"] = { color: activeColor };
+        },
+        tabBarIcon: () => (
+          <View>
+            <Image
+              source={require("assets/img/tabShortlist.png")}
+              style={{ width: tabIconSize, height: tabIconSize }}
+              resizeMode="contain"
+            />
+
+            {/* <SvgUri
+            width={svgSize}
+            fill={colors['dash']?.color || inactiveColor}
+            height={svgSize}
+            svgXmlData={compass}
+          /> */}
+          </View>
+        ),
+      },
+    },
+
+    Dashboard: {
+      screen: DashboardStack,
+      navigationOptions: {
+        tabBarLabel: (
+          <CustomText
+            text="Schools"
+            color={colors["dash"]?.color || inactiveColor}
+            size={15}
+            font={colors["dash"]?.color ? Fonts.bold : Fonts.semiBold}
+          />
+        ),
+
+        tabBarOnPress: () => {
+          Keyboard.dismiss();
+          colors = [];
+          colors["dash"] = { color: activeColor };
+        },
+        tabBarIcon: () => (
+          <View>
+            <Image
+              source={require("assets/img/tutorsActive.png")}
+              style={{ width: tabIconSize, height: tabIconSize }}
+              resizeMode="contain"
+            />
+
+            {/* <SvgUri
+            width={svgSize}
+            fill={colors['dash']?.color || inactiveColor}
+            height={svgSize}
+            svgXmlData={compass}
+          /> */}
+          </View>
+        ),
+      },
+    },
+
+    Profile: {
+      screen: ProfileStack,
+      navigationOptions: {
+        tabBarLabel: (
+          <CustomText
+            text="Profile"
+            color={colors["profile"]?.color || inactiveColor}
+            size={15}
+            font={colors["profile"]?.color ? Fonts.bold : Fonts.semiBold}
+          />
+        ),
+        tabBarOnPress: () => {
+          Keyboard.dismiss();
+          colors = [];
+          colors["profile"] = { color: activeColor };
+        },
+        tabBarIcon: () => (
+          <View>
+            <Image
+              source={require("assets/img/tabProfile.png")}
+              style={{ width: tabIconSize, height: tabIconSize }}
+              resizeMode="contain"
+            />
+          </View>
+        ),
+      },
+    },
+  },
+  {
+    initialRouteName: "Dashboard",
+    tabBarOptions: {
+    },
+    barStyle: {
+      backgroundColor: "#fff",
+      paddingVertical: 20,
+    },
+  }
+);
+
+const switcher = createAnimatedSwitchNavigator(
+  {
+    OnboardingStack,
+    InsideApp,
+  },
+  {
     transition: (
       <Transition.Together>
         <Transition.Out
@@ -111,10 +257,11 @@ const TopLevelNavigator = createAnimatedSwitchNavigator(
         />
         <Transition.In type="slide-top" durationMs={transitionSpeed} />
       </Transition.Together>
-    )
+    ),
   }
 );
-const AppContainer = createAppContainer(TopLevelNavigator);
+
+const AppContainer = createAppContainer(switcher);
 
 export default class AppRoot extends Component {
   render() {
@@ -131,6 +278,6 @@ export default class AppRoot extends Component {
 
 const styles = {
   container: {
-    flex: 1
-  }
-}
+    flex: 1,
+  },
+};
