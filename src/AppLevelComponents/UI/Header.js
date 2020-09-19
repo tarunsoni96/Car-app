@@ -27,6 +27,7 @@ class Header extends Component {
       subtitleAppender,
       title,
       subTitle,
+      titleStyle,
       marginBottom,
       onBack
     } = this.props;
@@ -44,7 +45,7 @@ class Header extends Component {
               height: hideBG ? undefined : commonVal,
               top: 0,
               left: 0,
-              paddingVertical: 40,
+              paddingVertical: 0,
               paddingHorizontal: 14,
               ...headerContainerStyle,
             }}
@@ -74,9 +75,11 @@ class Header extends Component {
                 style={{
                   marginLeft:7,
                   marginTop:12,
-                  fontFamily:Fonts.bold,
+                  fontFamily:Fonts.semiBold,
                   color: "#040714",
-                  fontSize: 23,
+                  fontSize: 26,
+                  ...titleStyle,
+
                 }}
               />
             )}

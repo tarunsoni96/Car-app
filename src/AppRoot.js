@@ -150,11 +150,8 @@ const InsideApp = createMaterialBottomTabNavigator(
         },
         tabBarIcon: () => (
           <View>
-            <Image
-              source={require("assets/img/tabShortlist.png")}
-              style={{ width: tabIconSize, height: tabIconSize }}
-              resizeMode="contain"
-            />
+                    <Icons lib="AntDesign" name="hearto" />
+            
 
             {/* <SvgUri
             width={svgSize}
@@ -244,8 +241,8 @@ const InsideApp = createMaterialBottomTabNavigator(
 
 const switcher = createAnimatedSwitchNavigator(
   {
-    OnboardingStack,
     InsideApp,
+    OnboardingStack,
   },
   {
     transition: (

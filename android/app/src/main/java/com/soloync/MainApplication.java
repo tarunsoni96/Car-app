@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.swmansion.reanimated.ReanimatedPackage;
 import eu.sigrlami.rnsimdata.RNSimDataReactPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.tkporter.sendsms.SendSMSPackage;

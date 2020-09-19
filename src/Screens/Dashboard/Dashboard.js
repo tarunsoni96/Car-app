@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, Animated, View } from "react-native";
 import CustomText from "AppLevelComponents/UI/CustomText";
 import Container from "AppLevelComponents/UI/Container";
 import Fonts from "UIProps/Fonts";
 import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import LinearGradient from "react-native-linear-gradient";
-
+import "Helpers/global";
 import HelperMethods from "../../Helpers/Methods";
 import SubHeader from "../../AppLevelComponents/UI/SubHeader";
 import MobxStore from "StorageHelpers/MobxStore";
@@ -23,6 +23,9 @@ import NoHorizontalMarginView from "AppLevelComponents/UI/NoHorizontalMarginView
 import CardSwiper from "AppLevelComponents/UI/CardSwiper";
 import CustomButton from "AppLevelComponents/UI/CustomButton";
 import { TouchableWithoutFeedback } from "react-native";
+
+const HEADER_EXPANDED_HEIGHT = 120;
+const HEADER_COLLAPSED_HEIGHT = 80;
 
 let dummyTutors = [
   {
@@ -77,7 +80,6 @@ let dummyTutors = [
   {
     instituteName: "EOD",
   },
-
 ];
 
 @observer
@@ -89,6 +91,8 @@ class Dashboard extends Component {
     this.state = {
       isApiCall: false,
       showWhiteInput: true,
+
+      scrollY: new Animated.Value(0),
     };
   }
 
@@ -105,116 +109,115 @@ class Dashboard extends Component {
     }
   }
 
-  onPressLeft(){
-    this.caraousal.snapToPrev()
+  onPressLeft() {
+    this.caraousal.snapToPrev();
   }
 
-  onPressRight(){
-    this.caraousal.snapToNext()
+  onPressRight() {
+    this.caraousal.snapToNext();
   }
-
 
   render() {
+    const headerHeight = this.state.scrollY.interpolate({
+      inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+      outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
+      extrapolate: "clamp",
+    });
+
+    const headerFontSize = this.state.scrollY.interpolate({
+      inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+      outputRange: [30, 20],
+      extrapolate: "clamp",
+    });
+
+
     return (
-      <Container
-        scrollEnabled={false}
-        safeAreaColor={Colors.screenBG}
-        showHeader={false}
-      >
-        <View
+      <View style={{}}>
+        <Animated.View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
+            height: headerHeight,
+            // borderBottomRightRadius: 3,
+            // borderBottomLeftRadius: 3,
+            backgroundColor: "#eee",
+            
+            elevation: 20,
+            // alignItems:'center',
+            justifyContent: "center",
+            padding: global.contentPadding,
           }}
         >
-          <Header title="Driving schools." hideBack />
-        <TouchableWithoutFeedback onPress={()=>this.props.navigation.navigate('OnboardingStack')} >
-
-          <View style={{ alignItems: "center" }}>
-            <Image
-              source={require("assets/img/location.png")}
-              style={{ width: 30, height: 30 }}
-              resizeMode="contain"
-            />
-            <CustomText font={Fonts.semiBold} text="Noida" color="#444B65" />
-          </View>
-          </TouchableWithoutFeedback>
-        </View>
-        <NoHorizontalMarginView style={{ flex: 1 }}>
-          <ImageBackground
-            source={require("assets/img/dashboardBG.png")}
-            style={{ flex: 1 }}
-            imageStyle={{ marginLeft: 0 }}
-            resizeMode="cover"
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
-            <CardSwiper setRef={ref => this.caraousal = ref} data={dummyTutors} />
+          <View>
 
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                paddingHorizontal: global.contentPadding,
-              }}
+            <Header
+              titleStyle={{ color: Colors.textLight,fontSize:26,fontFamily:Fonts.semiBold }}
+              title="Schools."
+              hideBack
+            />
+            <CustomText text="40 tutors nearby" size={19} marginTop={10} />
+          </View>
+            <TouchableWithoutFeedback
+              onPress={() => this.props.navigation.navigate("OnboardingStack")}
             >
-              <CustomButton
-                lib={"Entypo"}
-                size={30}
-                btnStyle={{
-                  backgroundColor: "#fff",
-                  borderWidth: 1,
-                  borderColor: "#C9C9C9",
-                }}
-                iconColor="#040714"
-                round
-                press={()=>this.onPressLeft()}
-                icon={"chevron-left"}
-              />
-              <View
-                style={{
-                  borderRadius: 90,
-                  backgroundColor: "#040714",
-                  paddingHorizontal: 20,
-                  padding: 13,
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <Icons
-                  lib="Feather"
-                  name="bookmark"
-                  color={Colors.buttonText}
-                  size={18}
+              <View style={{ alignItems: "center" }}>
+                <Image
+                  source={require("assets/img/location.png")}
+                  style={{ width: 30, height: 30 }}
+                  resizeMode="contain"
                 />
-
                 <CustomText
-                  text="Add to Shortlist"
-                  color={Colors.buttonText}
-                  style={{ marginLeft: 15 }}
-                  size={14}
+                  font={Fonts.semiBold}
+                  text="Noida"
+                  color="#444B65"
                 />
               </View>
-              <CustomButton
-                press={()=>this.onPressRight()}
+            </TouchableWithoutFeedback>
+          </View>
+        </Animated.View>
 
-                lib={"Entypo"}
-                size={30}
-                btnStyle={{
-                  backgroundColor: "#fff",
-                  borderWidth: 1,
-                  borderColor: "#C9C9C9",
-                }}
-                iconColor="#040714"
-                round
-                icon={"chevron-right"}
-              />
-            </View>
-          </ImageBackground>
-        </NoHorizontalMarginView>
-      </Container>
+        <Container
+          safeAreaColor={Colors.screenBG}
+          showHeader={false}
+          onScroll={Animated.event([
+            {
+              nativeEvent: {
+                contentOffset: {
+                  y: this.state.scrollY,
+                },
+              },
+            },
+          ])}
+          scrollEventThrottle={16}
+        >
+          <NoHorizontalMarginView
+          verticalAlso
+
+            style={{ width:global.deviceWidth,padding:global.contentPadding, }}
+          >
+            <CardSwiper
+              setRef={(ref) => (this.caraousal = ref)}
+              data={dummyTutors}
+            />
+          </NoHorizontalMarginView>
+        </Container>
+      </View>
     );
   }
 }
 
+const styles = {
+  circle: {
+    width: 55,
+    height: 55,
+    borderRadius: 100 / 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+};
 export default Dashboard;

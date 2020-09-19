@@ -9,6 +9,8 @@ light:'NunitoSans-Light',
 regular:'NunitoSans-Regular',
 semiBold:'NunitoSans-SemiBold',
 
+lightItalic:'NunitoSans-LightItalic'
+
 
 
 };

@@ -17,7 +17,7 @@ global.fontFamily_bold = "proximaNova_bold"
 global.minPinchScale = 1
 global.maxPinchScale = 2
 
-global.contentPadding = 18
+global.contentPadding = 20
 
 
 

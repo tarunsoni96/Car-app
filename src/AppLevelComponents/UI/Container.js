@@ -111,11 +111,14 @@ export default class Container extends Component {
               />
             )
           }
+          
           extraScrollHeight={extraScrollheight || undefined}
           scrollEnabled={scrollEnabled == undefined ? true : scrollEnabled}
           keyboardShouldPersistTaps="handled"
           nestedScrollEnabled
           contentContainerStyle={[styles.contentFixed, { ...contentStyle }]}
+
+          {...this.props}
         >
           <View
             style={{

@@ -419,7 +419,7 @@ PODS:
     - React-Core
     - React-RCTImage
     - TOCropViewController
-  - RNReanimated (1.9.0):
+  - RNReanimated (1.13.0):
     - React
   - RNSketchCanvas (0.8.0):
     - React
@@ -695,7 +695,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: 6baed9bb19c9c54614bef63bdc55c381b4e33c44
   RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
   RNImageCropPicker: f0557a908758c4a3f83978894ec7227651529b45
-  RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
+  RNReanimated: 89f5e0a04d1dd52fbf27e7e7030d8f80a646a3fc
   RNSketchCanvas: 6939b18677cd1794151cc3d8eb5a0a2158a4a05b
   RNSnackbar: 05ac62b2771383704f012c20434bfe8f79244d02
   RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f
@@ -704,6 +704,6 @@ SPEC CHECKSUMS:
   TOCropViewController: 2a1ae1242600b1f2d996fd91a5268b2309a33b5c
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 058b8d2865782a49a439ba020e575725062c9aa0
+PODFILE CHECKSUM: 83f6a609093cca741ab8cc25fc54625e90b6b957
 
 COCOAPODS: 1.9.3

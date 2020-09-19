@@ -49,7 +49,7 @@ export default class CustomButton extends Component {
           {
             ...containerStyle,
           },
-          half && { width: widthPercentageToDP(38), alignSelf: "flex-end",borderRadius:10 },
+          half && {  alignSelf: "flex-end",borderRadius:10 },
         ]}
       >
         <TouchableWithoutFeedback onPress={() => this.onPress()}>
@@ -97,7 +97,9 @@ const styles = EStyleSheet.create({
 
   btn: {
     borderRadius: 12,
-
+    backgroundColor:Colors.buttonBG,
+    padding:10,
+    borderRadius:100
   },
 
   rountBtn:{
