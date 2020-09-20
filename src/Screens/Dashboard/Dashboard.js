@@ -23,6 +23,7 @@ import NoHorizontalMarginView from "AppLevelComponents/UI/NoHorizontalMarginView
 import CardSwiper from "AppLevelComponents/UI/CardSwiper";
 import CustomButton from "AppLevelComponents/UI/CustomButton";
 import { TouchableWithoutFeedback } from "react-native";
+import { SafeAreaView } from "react-native";
 
 const HEADER_EXPANDED_HEIGHT = 120;
 const HEADER_COLLAPSED_HEIGHT = 80;
@@ -132,7 +133,7 @@ class Dashboard extends Component {
 
 
     return (
-      <View style={{}}>
+      <SafeAreaView style={{flex:1,}}>
         <Animated.View
           style={{
             height: headerHeight,
@@ -206,7 +207,7 @@ class Dashboard extends Component {
             />
           </NoHorizontalMarginView>
         </Container>
-      </View>
+      </SafeAreaView>
     );
   }
 }
