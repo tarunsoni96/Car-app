@@ -136,12 +136,7 @@ class Dashboard extends Component {
       <SafeAreaView style={{flex:1,}}>
         <Animated.View
           style={{
-            height: headerHeight,
-            // borderBottomRightRadius: 3,
-            // borderBottomLeftRadius: 3,
-            backgroundColor: "#eee",
-            
-            elevation: 20,
+            backgroundColor: "#F8FAF9",
             // alignItems:'center',
             justifyContent: "center",
             padding: global.contentPadding,
@@ -157,7 +152,7 @@ class Dashboard extends Component {
           <View>
 
             <Header
-              titleStyle={{ color: Colors.textLight,fontSize:26,fontFamily:Fonts.semiBold }}
+              titleStyle={{ color: Colors.textPrimary,fontSize:26,fontFamily:Fonts.semiBold }}
               title="Schools."
               hideBack
             />
@@ -166,8 +161,8 @@ class Dashboard extends Component {
             <TouchableWithoutFeedback
               onPress={() => this.props.navigation.navigate("OnboardingStack")}
             >
-              <View style={{ alignItems: "center" }}>
-                <Image
+              <View style={{ alignItems: "center",flexDirection:'row',flex:1,justifyContent:'flex-end' }}>
+              <Image
                   source={require("assets/img/location.png")}
                   style={{ width: 30, height: 30 }}
                   resizeMode="contain"
@@ -199,7 +194,7 @@ class Dashboard extends Component {
           <NoHorizontalMarginView
           verticalAlso
 
-            style={{ width:global.deviceWidth,padding:global.contentPadding, }}
+            style={{ width:global.deviceWidth,padding:global.contentPadding,paddingBottom:0,backgroundColor:'#F8FAF9' }}
           >
             <CardSwiper
               setRef={(ref) => (this.caraousal = ref)}

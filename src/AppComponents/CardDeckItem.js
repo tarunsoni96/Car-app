@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, View, Image } from "react-native";
+import { StyleSheet,Vibration, TouchableOpacity, View, Image } from "react-native";
 import CustomText from "AppLevelComponents/UI/CustomText";
 import Container from "AppLevelComponents/UI/Container";
 import Fonts from "UIProps/Fonts";
@@ -38,20 +38,19 @@ class CardDeckItem extends Component {
 
   renderStars() {
     let r = Math.floor(Math.random() * 5);
-    let icons = []
-    if(r){
-
+    let icons = [];
+    if (r) {
       icons = new Array(r).fill(
         <Icons
-        lib="AntDesign"
-        style={{ bottom: 1 }}
-        name="star"
-        color={Colors.accent}
-      />
-    );
-  } else {
-    icons.push(<CustomText text="No ratings yet" color={'#fff'} size={20} />)
-  }
+          lib="AntDesign"
+          style={{ bottom: 1 }}
+          name="star"
+          color={Colors.accent}
+        />
+      );
+    } else {
+      icons.push(<CustomText text="No ratings yet" color={"#fff"} size={20} />);
+    }
     return (
       <View
         style={{
@@ -71,6 +70,7 @@ class CardDeckItem extends Component {
   handleViewRef = (ref) => (this.view = ref);
 
   addToShortlist() {
+    Vibration.vibrate(30)
     this.setState({ added: !this.state.added });
     this.view
       .pulse(600)
@@ -152,7 +152,7 @@ class CardDeckItem extends Component {
             </View>
           </View>
 
-          <View style={{ padding: 14, paddingVertical: 20 }}>
+          <View style={{ padding: 14, paddingVertical: 13 }}>
             <View
               style={{
                 flexDirection: "row",
@@ -174,7 +174,7 @@ class CardDeckItem extends Component {
 
                 <View style={{ paddingHorizontal: 5 }} />
 
-                <View style={{}}>
+                <View style={{ flex: 1 }}>
                   <View
                     style={{
                       flexDirection: "row",
@@ -182,7 +182,7 @@ class CardDeckItem extends Component {
                       justifyContent: "space-between",
                     }}
                   >
-                    <View style={{ width: "72%", paddingLeft: 6 }}>
+                    <View style={{ paddingLeft: 6 }}>
                       <CustomText
                         text={"Shyam singh"}
                         color={Colors.textPrimary}
@@ -198,8 +198,7 @@ class CardDeckItem extends Component {
                           alignItems: "center",
                         }}
                       >
-                        {/* <Icons lib="AntDesign" name={this.state.added ? 'heart' : "hearto"} color={this.state.added ? Colors.accent : "#000"} /> */}
-                        <Icons lib="AntDesign" name={"clockcircle"} size={19} />
+                        <Icons lib="AntDesign" name={"clockcircleo"} size={16} />
                         <CustomText
                           text={" 15 days"}
                           color={Colors.textPrimary}
@@ -207,28 +206,40 @@ class CardDeckItem extends Component {
                           size={18}
                         />
                       </View>
-                    </View>
-                    <Animatable.View
+                      <Animatable.View
                       animation={this.state.animation}
                       ref={this.handleViewRef}
                     >
+                      
+                    
                       <TouchableOpacity
                         style={{
-                          width: 40,
-                          marginLeft: -13,
-                          height: 40,
-                          alignItems: "center",
-                          justifyContent: "center",
                         }}
                         onPress={() => this.addToShortlist()}
                       >
+                      <View
+                        style={{ flexDirection: "row", alignItems: "center",marginTop:4 }}
+                      >
                         <Icons
-                          lib="AntDesign"
-                          name={this.state.added ? "heart" : "hearto"}
-                          color={this.state.added ? Colors.accent : "#000"}
+                        size={16}
+                          lib= { this.state.added ? 'AntDesign' : "FontAwesome"}
+                          name={this.state.added ? "delete" : "angellist"}
+                          color={this.state.added ? '#BA2F50' : "#000"}
                         />
+
+                        <CustomText
+                          text={this.state.added ? 'In shortlist' : "Add to shortlist"}
+                          color={this.state.added ? '#BA2F50' : Colors.textPrimary}
+                          // font={Fonts.regular}
+                          style={{marginLeft:5}}
+                          size={18}
+                        />
+                      </View>
                       </TouchableOpacity>
                     </Animatable.View>
+
+                    </View>
+                    
                   </View>
                 </View>
               </View>
