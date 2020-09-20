@@ -45,7 +45,7 @@ class Header extends Component {
               height: hideBG ? undefined : commonVal,
               top: 0,
               left: 0,
-              paddingVertical: 0,
+              paddingVertical: 15,
               paddingHorizontal: 14,
               ...headerContainerStyle,
             }}

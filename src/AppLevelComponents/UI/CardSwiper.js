@@ -50,7 +50,7 @@ export default class CardSwiper extends Component {
         data={this.state.data}
         contentInsetAdjustmentBehavior='automatic'
         keyExtractor={(y, z) => z.toString()}
-        style={{alignSelf:'center',paddingTop:10,marginBottom:60,width:global.deviceWidth}}
+        style={{alignSelf:'center',paddingTop:10,marginBottom:0,width:global.deviceWidth}}
         // contentContainerStyle={{alignSelf:}}
         extraData={this.state}
         renderItem={this.renderItem}

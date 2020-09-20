@@ -38,30 +38,36 @@ class CardDeckItem extends Component {
 
   renderStars() {
     let r = Math.floor(Math.random() * 5);
-    let icons = []
-    if(r){
-
+    let icons = [];
+    if (r) {
       icons = new Array(r).fill(
         <Icons
-        lib="AntDesign"
-        style={{ bottom: 1 }}
-        name="star"
-        color={Colors.accent}
-      />
-    );
-  } else {
-    icons.push(<CustomText text="No ratings yet" color={'#fff'} size={20} />)
-  }
+          lib="AntDesign"
+          style={{ bottom: 1 }}
+          name="star"
+          color={"#F8E31E"}
+        />
+      );
+
+      for (let i = r; i < 5; i++) {
+        icons.push(
+          <Icons
+            lib="AntDesign"
+            style={{ bottom: 1 }}
+            name="staro"
+            color={"#F8E31E"}
+          />
+        );
+      }
+    } else {
+      icons.push(<CustomText text="No ratings yet" color={Colors.textLight} font={Fonts.regular} size={17} />);
+    }
     return (
       <View
         style={{
           flexDirection: "row",
           alignItems: "center",
-          position: "absolute",
-          bottom: 2,
-          left: 0,
-          right: 0,
-          justifyContent: "space-evenly",
+          // justifyContent: "",
         }}
       >
         {icons}
@@ -112,7 +118,7 @@ class CardDeckItem extends Component {
                 <ImageBackground
                   source={{
                     uri:
-                      "https://cnet2.cbsistatic.com/img/A9sobjTXrgz0s-7vqg0N9dy2M9U=/940x0/2020/01/15/8776e381-47d9-475a-bd6c-b19fc9f3c21d/ferrari.jpg",
+                      "https://cdn1.acedms.com/photos/listing/2018-05-12/a5f4a61f00b558744739474a3d68a63b_large.jpg",
                   }}
                   style={{ width: "100%", height: 340, borderRadius }}
                   imageStyle={{
@@ -132,21 +138,6 @@ class CardDeckItem extends Component {
                       borderTopRightRadius: borderRadius,
                     }}
                   />
-
-                  <View style={styles.courseFee}>
-                    <View
-                      style={{ flexDirection: "row", alignItems: "center" }}
-                    >
-                      <CustomText
-                        text={`${"\u20B9"}2,000`}
-                        color={Colors.textPrimary}
-                        font={Fonts.bold}
-                        size={20}
-                      />
-                    </View>
-                  </View>
-
-                  {this.renderStars()}
                 </ImageBackground>
               </View>
             </View>
@@ -165,7 +156,7 @@ class CardDeckItem extends Component {
                   <Image
                     source={{
                       uri:
-                        "https://www.getuppeople.com/upload/photo/users_profile/2419_.jpg",
+                        "https://sl.sbs.com.au/public/image/file/b8cfe314-f89d-4605-977f-829468d33556",
                     }}
                     style={{ borderRadius: 40, height: 63, width: 63 }}
                     resizeMode="cover"
@@ -184,29 +175,14 @@ class CardDeckItem extends Component {
                   >
                     <View style={{ width: "72%", paddingLeft: 6 }}>
                       <CustomText
-                        text={"Shyam singh"}
+                        text={"Harry singh"}
                         color={Colors.textPrimary}
                         font={Fonts.bold}
                         size={21}
                         marginTop={4}
                       />
 
-                      <View
-                        style={{
-                          flexDirection: "row",
-                          marginTop: 4,
-                          alignItems: "center",
-                        }}
-                      >
-                        {/* <Icons lib="AntDesign" name={this.state.added ? 'heart' : "hearto"} color={this.state.added ? Colors.accent : "#000"} /> */}
-                        <Icons lib="AntDesign" name={"clockcircle"} size={19} />
-                        <CustomText
-                          text={" 15 days"}
-                          color={Colors.textPrimary}
-                          font={Fonts.black}
-                          size={18}
-                        />
-                      </View>
+                      {this.renderStars()}
                     </View>
                     <Animatable.View
                       animation={this.state.animation}
@@ -234,6 +210,65 @@ class CardDeckItem extends Component {
               </View>
             </View>
           </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <View style={styles.courseFee}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <CustomText
+                  text={`${"\u20B9"}2,000`}
+                  color={Colors.textPrimary}
+                  font={Fonts.bold}
+                  size={20}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Icons lib="AntDesign" name={"clockcircle"} size={19} />
+              <CustomText
+                text={" 15 days"}
+                color={Colors.textPrimary}
+                font={Fonts.black}
+                size={18}
+              />
+            </View>
+
+            <TouchableOpacity
+              text="BOOK"
+              style={{
+                backgroundColor: "#000",
+                borderRadius: 0,
+                alignSelf: "flex-end",
+                borderBottomRightRadius: borderRadius,
+                margin: 5,
+                alignItems: "center",
+                paddingVertical: 13,
+                paddingHorizontal: 30,
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <CustomText text="book" size={19} color={Colors.buttonText} />
+              <View style={{ paddingHorizontal: 5 }} />
+              <Icons
+                lib="AntDesign"
+                name="arrowright"
+                color={Colors.buttonText}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </Animatable.View>
     );
@@ -248,11 +283,7 @@ const styles = StyleSheet.create({
   },
 
   courseFee: {
-    position: "absolute",
-    left: 15,
-    backgroundColor: Colors.accent,
     padding: 7,
-    top: 20,
     paddingHorizontal: 15,
     borderRadius: 20,
   },

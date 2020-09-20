@@ -7,6 +7,7 @@ import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import LinearGradient from "react-native-linear-gradient";
 import "Helpers/global";
 import HelperMethods from "../../Helpers/Methods";
+
 import SubHeader from "../../AppLevelComponents/UI/SubHeader";
 import MobxStore from "StorageHelpers/MobxStore";
 import { observer } from "mobx-react";
@@ -25,7 +26,7 @@ import CustomButton from "AppLevelComponents/UI/CustomButton";
 import { TouchableWithoutFeedback } from "react-native";
 
 const HEADER_EXPANDED_HEIGHT = 120;
-const HEADER_COLLAPSED_HEIGHT = 80;
+const HEADER_COLLAPSED_HEIGHT = 0;
 
 let dummyTutors = [
   {
@@ -130,7 +131,6 @@ class Dashboard extends Component {
       extrapolate: "clamp",
     });
 
-
     return (
       <View style={{}}>
         <Animated.View
@@ -138,47 +138,63 @@ class Dashboard extends Component {
             height: headerHeight,
             // borderBottomRightRadius: 3,
             // borderBottomLeftRadius: 3,
-            backgroundColor: "#eee",
-            
-            elevation: 20,
             // alignItems:'center',
             justifyContent: "center",
-            padding: global.contentPadding,
           }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
+          <LinearGradient
+            useAngle={true}
+            angle={180}
+            angleCenter={{ x: 0.25, y: 0.25 }}
+            colors={["#F5FF00", "#FFE200"]}
+            style={[
+              {
+                height:120,
+                justifyContent: "center",
+                padding: global.contentPadding,
+              },
+            ]}
           >
-          <View>
-
-            <Header
-              titleStyle={{ color: Colors.textLight,fontSize:26,fontFamily:Fonts.semiBold }}
-              title="Schools."
-              hideBack
-            />
-            <CustomText text="40 tutors nearby" size={19} marginTop={10} />
-          </View>
-            <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate("OnboardingStack")}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
             >
-              <View style={{ alignItems: "center" }}>
-                <Image
-                  source={require("assets/img/location.png")}
-                  style={{ width: 30, height: 30 }}
-                  resizeMode="contain"
+              <View>
+                <Header
+                  titleStyle={{
+                    color: Colors.textPrimary,
+                    fontSize: 26,
+                    fontFamily: Fonts.semiBold,
+                  }}
+                  title="Schools."
+                  hideBack
                 />
-                <CustomText
-                  font={Fonts.semiBold}
-                  text="Noida"
-                  color="#444B65"
-                />
+                <CustomText text="40 tutors nearby" size={19} marginTop={-5} />
               </View>
-            </TouchableWithoutFeedback>
-          </View>
+              <TouchableWithoutFeedback
+                onPress={() =>
+                  this.props.navigation.navigate("OnboardingStack")
+                }
+              >
+                <View style={{flexDirection:'row', alignItems: "center" }}>
+                  
+                  <CustomText
+                    font={Fonts.semiBold}
+                    text="Noida"
+                    color="#444B65"
+                  />
+                  <Image
+                    source={require("assets/img/location.png")}
+                    style={{ width: 30, height: 30 }}
+                    resizeMode="contain"
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
+          </LinearGradient>
         </Animated.View>
 
         <Container
@@ -193,12 +209,14 @@ class Dashboard extends Component {
               },
             },
           ])}
-          scrollEventThrottle={16}
+          scrollEventThrottle={206}
         >
           <NoHorizontalMarginView
-          verticalAlso
-
-            style={{ width:global.deviceWidth,padding:global.contentPadding, }}
+            verticalAlso
+            style={{
+              width: global.deviceWidth,
+              padding: global.contentPadding,
+            }}
           >
             <CardSwiper
               setRef={(ref) => (this.caraousal = ref)}
