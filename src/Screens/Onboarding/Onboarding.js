@@ -93,8 +93,8 @@ class MobileScreen extends Component {
     let screens = [
       <OnboardingMobileNumber scrollNext={()=>this.vpRef.scrollToNext()} />,
       <OnboardingOTP scrollNext={()=>this.vpRef.scrollToNext()} scrollPrev={()=> this.vpRef.scrollToPrevious()} />,
-      <OnboardingUserSelection scrollNext={()=>this.vpRef.scrollToNext()} scrollPrev={()=> this.vpRef.scrollToPrevious()} />,
       <OnboardingUserProfile scrollNext={()=>this.vpRef.scrollToNext()} scrollPrev={()=> this.vpRef.scrollToPrevious()} />,
+      <OnboardingUserSelection scrollNext={()=>this.vpRef.scrollToNext()} scrollPrev={()=> this.vpRef.scrollToPrevious()} />,
     ];
     return (
       <Container

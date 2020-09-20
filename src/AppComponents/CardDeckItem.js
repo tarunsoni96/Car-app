@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet,Vibration, TouchableOpacity, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Vibration,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 import CustomText from "AppLevelComponents/UI/CustomText";
 import Container from "AppLevelComponents/UI/Container";
 import Fonts from "UIProps/Fonts";
@@ -24,10 +30,12 @@ import CustomRadioButton from "AppLevelComponents/UI/CustomRadioButton";
 import CustomButton from "AppLevelComponents/UI/CustomButton";
 
 let borderRadius = 25;
+
 @observer
 class CardDeckItem extends Component {
   constructor(props) {
     super(props);
+    this.icons = [];
     this.state = {
       data: [],
       isApiCall: false,
@@ -37,40 +45,70 @@ class CardDeckItem extends Component {
   }
 
   renderStars() {
-    let r = Math.floor(Math.random() * 5);
-    let icons = [];
-    if (r) {
-      icons = new Array(r).fill(
-        <Icons
-          lib="AntDesign"
-          style={{ bottom: 1 }}
-          name="star"
-          color={Colors.accent}
-        />
+    if (this.icons.length == 0) {
+      let r = Math.floor(Math.random() * 5);
+      if (r) {
+        this.icons = new Array(r).fill(
+          <Icons
+            lib="AntDesign"
+            style={{ bottom: 1 }}
+            name="star"
+            color={Colors.accent}
+          />
+        );
+
+        for (let i = r; i < 5; i++) {
+          this.icons.push(
+            <Icons
+              lib="AntDesign"
+              style={{ bottom: 1 }}
+              name="staro"
+              color={Colors.accent}
+            />
+          );
+        }
+      } else {
+        this.icons.push(
+          <CustomText text="No ratings yet" color={"#fff"} size={20} />
+        );
+      }
+      return (
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            position: "absolute",
+            bottom: 2,
+            left: 0,
+            right: 0,
+            justifyContent: "space-evenly",
+          }}
+        >
+          {this.icons}
+        </View>
       );
     } else {
-      icons.push(<CustomText text="No ratings yet" color={"#fff"} size={20} />);
+      return (
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            position: "absolute",
+            bottom: 2,
+            left: 0,
+            right: 0,
+            justifyContent: "space-evenly",
+          }}
+        >
+          {this.icons}
+        </View>
+      );
     }
-    return (
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          position: "absolute",
-          bottom: 2,
-          left: 0,
-          right: 0,
-          justifyContent: "space-evenly",
-        }}
-      >
-        {icons}
-      </View>
-    );
   }
   handleViewRef = (ref) => (this.view = ref);
 
   addToShortlist() {
-    Vibration.vibrate(30)
+    Vibration.vibrate(30);
     this.setState({ added: !this.state.added });
     this.view
       .pulse(600)
@@ -84,7 +122,7 @@ class CardDeckItem extends Component {
     const { item } = this.props;
     return (
       <Animatable.View
-        animation={""}
+        animation={"slideInUp"}
         duration={600}
         delay={100 * this.props.index}
       >
@@ -198,7 +236,11 @@ class CardDeckItem extends Component {
                           alignItems: "center",
                         }}
                       >
-                        <Icons lib="AntDesign" name={"clockcircleo"} size={16} />
+                        <Icons
+                          lib="AntDesign"
+                          name={"clockcircleo"}
+                          size={16}
+                        />
                         <CustomText
                           text={" 15 days"}
                           color={Colors.textPrimary}
@@ -207,39 +249,48 @@ class CardDeckItem extends Component {
                         />
                       </View>
                       <Animatable.View
-                      animation={this.state.animation}
-                      ref={this.handleViewRef}
-                    >
-                      
-                    
-                      <TouchableOpacity
-                        style={{
-                        }}
-                        onPress={() => this.addToShortlist()}
+                        animation={this.state.animation}
+                        ref={this.handleViewRef}
                       >
-                      <View
-                        style={{ flexDirection: "row", alignItems: "center",marginTop:4 }}
-                      >
-                        <Icons
-                        size={16}
-                          lib= { this.state.added ? 'AntDesign' : "FontAwesome"}
-                          name={this.state.added ? "delete" : "angellist"}
-                          color={this.state.added ? '#BA2F50' : "#000"}
-                        />
+                        <TouchableOpacity
+                          style={{}}
+                          onPress={() => this.addToShortlist()}
+                        >
+                          <View
+                            style={{
+                              flexDirection: "row",
+                              alignItems: "center",
+                              marginTop: 4,
+                            }}
+                          >
+                            <Icons
+                              size={16}
+                              lib={
+                                this.state.added ? "AntDesign" : "FontAwesome"
+                              }
+                              name={this.state.added ? "delete" : "angellist"}
+                              color={this.state.added ? "#BA2F50" : "#000"}
+                            />
 
-                        <CustomText
-                          text={this.state.added ? 'In shortlist' : "Add to shortlist"}
-                          color={this.state.added ? '#BA2F50' : Colors.textPrimary}
-                          // font={Fonts.regular}
-                          style={{marginLeft:5}}
-                          size={18}
-                        />
-                      </View>
-                      </TouchableOpacity>
-                    </Animatable.View>
-
+                            <CustomText
+                              text={
+                                this.state.added
+                                  ? "In shortlist"
+                                  : "Add to shortlist"
+                              }
+                              color={
+                                this.state.added
+                                  ? "#BA2F50"
+                                  : Colors.textPrimary
+                              }
+                              // font={Fonts.regular}
+                              style={{ marginLeft: 5 }}
+                              size={18}
+                            />
+                          </View>
+                        </TouchableOpacity>
+                      </Animatable.View>
                     </View>
-                    
                   </View>
                 </View>
               </View>

@@ -24,6 +24,7 @@ import CardSwiper from "AppLevelComponents/UI/CardSwiper";
 import CustomButton from "AppLevelComponents/UI/CustomButton";
 import { TouchableWithoutFeedback } from "react-native";
 import { SafeAreaView } from "react-native";
+import LottieHOC from "AppLevelComponents/UI/LottieHOC";
 
 const HEADER_EXPANDED_HEIGHT = 120;
 const HEADER_COLLAPSED_HEIGHT = 80;
@@ -90,9 +91,9 @@ class Dashboard extends Component {
 
     this.inputValObj = {};
     this.state = {
-      isApiCall: false,
+      isApiCall: true,
       showWhiteInput: true,
-
+      
       scrollY: new Animated.Value(0),
     };
   }
@@ -101,7 +102,11 @@ class Dashboard extends Component {
     HelperMethods.appExitPrompter();
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({isApiCall:false})  
+    }, 2400);
+  }
 
   setGlobalRef(ref) {
     if (!this.vpRef) {
@@ -131,9 +136,8 @@ class Dashboard extends Component {
       extrapolate: "clamp",
     });
 
-
     return (
-      <SafeAreaView style={{flex:1,}}>
+      <SafeAreaView style={{ flex: 1 }}>
         <Animated.View
           style={{
             backgroundColor: "#F8FAF9",
@@ -149,20 +153,30 @@ class Dashboard extends Component {
               justifyContent: "space-between",
             }}
           >
-          <View>
-
-            <Header
-              titleStyle={{ color: Colors.textPrimary,fontSize:26,fontFamily:Fonts.semiBold }}
-              title="Schools."
-              hideBack
-            />
-            <CustomText text="40 tutors nearby" size={19} marginTop={10} />
-          </View>
+            <View>
+              <Header
+                titleStyle={{
+                  color: Colors.textPrimary,
+                  fontSize: 26,
+                  fontFamily: Fonts.semiBold,
+                }}
+                title="Schools."
+                hideBack
+              />
+              <CustomText text="40 tutors nearby" size={19} marginTop={10} />
+            </View>
             <TouchableWithoutFeedback
               onPress={() => this.props.navigation.navigate("OnboardingStack")}
             >
-              <View style={{ alignItems: "center",flexDirection:'row',flex:1,justifyContent:'flex-end' }}>
-              <Image
+              <View
+                style={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  flex: 1,
+                  justifyContent: "flex-end",
+                }}
+              >
+                <Image
                   source={require("assets/img/location.png")}
                   style={{ width: 30, height: 30 }}
                   resizeMode="contain"
@@ -192,14 +206,24 @@ class Dashboard extends Component {
           scrollEventThrottle={16}
         >
           <NoHorizontalMarginView
-          verticalAlso
+            verticalAlso
+            style={{
+              width: global.deviceWidth,
+              padding: global.contentPadding,
+              alignItems:'center',
+              justifyContent:'center',
+              paddingBottom: 0,
+              flex:0.7,
+              backgroundColor: "#F8FAF9",
+            }}
+           >
+          <NetworkAwareContent isApiCall={this.state.isApiCall} data={dummyTutors} showLottie >
 
-            style={{ width:global.deviceWidth,padding:global.contentPadding,paddingBottom:0,backgroundColor:'#F8FAF9' }}
-          >
             <CardSwiper
               setRef={(ref) => (this.caraousal = ref)}
               data={dummyTutors}
             />
+          </NetworkAwareContent>
           </NoHorizontalMarginView>
         </Container>
       </SafeAreaView>

@@ -32,12 +32,14 @@ import OnboardingUserSelection from "Screens/Onboarding/OnboardingUserSelection"
 import CustomText from "AppLevelComponents/UI/CustomText";
 import Fonts from "UIProps/Fonts";
 import Profile from "Screens/Profile/Profile";
+import logoSvg from 'assets/img/logoSvg.svg'
+import SvgUri from "react-native-svg-uri";
 
 let transitionSpeed = 650;
 let tabIconSize = 27;
 
 let svgSize = 26;
-let activeColor = Colors.textPrimary;
+let activeColor = Colors.accent;
 let inactiveColor = "#777F9C";
 let colors = { dash: { color: activeColor } };
 
@@ -170,7 +172,7 @@ const InsideApp = createMaterialBottomTabNavigator(
         tabBarLabel: (
           <CustomText
             text="Schools"
-            color={colors["dash"]?.color || inactiveColor}
+            color={Colors.textPrimary || inactiveColor}
             size={15}
             font={colors["dash"]?.color ? Fonts.bold : Fonts.semiBold}
           />
@@ -183,18 +185,18 @@ const InsideApp = createMaterialBottomTabNavigator(
         },
         tabBarIcon: () => (
           <View>
-            <Image
+            {/* <Image
               source={require("assets/img/tutorsActive.png")}
               style={{ width: tabIconSize, height: tabIconSize }}
               resizeMode="contain"
-            />
+            /> */}
 
-            {/* <SvgUri
+            <SvgUri
             width={svgSize}
             fill={colors['dash']?.color || inactiveColor}
             height={svgSize}
-            svgXmlData={compass}
-          /> */}
+            svgXmlData={logoSvg}
+          />
           </View>
         ),
       },
@@ -230,6 +232,7 @@ const InsideApp = createMaterialBottomTabNavigator(
   },
   {
     initialRouteName: "Dashboard",
+    
     tabBarOptions: {
     },
     barStyle: {

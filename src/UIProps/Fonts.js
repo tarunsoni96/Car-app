@@ -2,15 +2,11 @@
 'use strict';
 
 export default {
- 
-bold:'NunitoSans-Bold',
-black:'NunitoSans-Black',
-light:'NunitoSans-Light',
-regular:'NunitoSans-Regular',
-semiBold:'NunitoSans-SemiBold',
 
-lightItalic:'NunitoSans-LightItalic'
-
-
-
+// bold:'Inter-Black-slnt',
+// black:'Inter-Bold-slnt',
+// light:'Inter-ExtraBold-slnt',
+// regular:'Inter-ExtraLight-slnt',
+// semiBold:'Inter-Light-slnt',
+// lightItalic:'Inter-Medium-slnt',
 };

@@ -29,14 +29,22 @@ import CustomButton from "AppLevelComponents/UI/CustomButton";
 import CustomTextInput from "AppLevelComponents/UI/FormInputs/CustomTextInput";
 import RNSimData from "react-native-sim-data";
 import Header from "AppLevelComponents/UI/Header";
+import { withNavigation } from "react-navigation";
 
-export default class OnboardingUserSelection extends Component {
+ class OnboardingUserSelection extends Component {
   componentDidMount() {}
 
   verifyOTP() {}
 
   selectUser(userType){
-    this.props.scrollNext()
+    if(userType == 'Learner'){
+
+      this.props.navigation.navigate("InsideApp");
+    } else {
+      alert('in prog')
+    }
+
+    
   }
 
   render() {
@@ -105,7 +113,7 @@ export default class OnboardingUserSelection extends Component {
               justifyContent: "space-between",
             }}
           >
-          <TouchableWithoutFeedback onPress={()=>this.selectUser('learner')} style={{flex:1}} >
+          <TouchableWithoutFeedback onPress={()=>this.selectUser('Learner')} style={{flex:1}} >
 
             <View style={styles.userBtn}>
               <CustomText
@@ -171,3 +179,4 @@ const styles = {
     marginTop:40,
   },
 };
+export default withNavigation(OnboardingUserSelection)

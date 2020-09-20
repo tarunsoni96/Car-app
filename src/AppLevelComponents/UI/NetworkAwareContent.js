@@ -73,7 +73,7 @@ class NetworkAwareContent extends Component {
     switch (isApiCall) {
       case true:
 
-        view = <Loader style={{marginTop: marginTop}} />;
+        view = <Loader showLottie={this.props.showLottie} style={{marginTop: marginTop}} />;
         break;
       case 'failed':
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 
-import { Image, TouchableWithoutFeedback, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import CustomText from "AppLevelComponents/UI/CustomText";
 import Container from "AppLevelComponents/UI/Container";
 import Fonts from "UIProps/Fonts";
@@ -19,26 +19,23 @@ import { FlatList } from "react-native";
 import { Card } from "react-native-elements";
 import Icons from "AppLevelComponents/UI/Icons";
 import { Colors } from "UIProps/Colors";
-import Header from "AppLevelComponents/UI/Header";
-import CustomTextInput from "AppLevelComponents/UI/FormInputs/CustomTextInput";
+import { TouchableWithoutFeedback } from "react-native";
+import { SafeAreaView } from "react-native";
+import FirstName from "AppLevelComponents/UI/FormInputs/FirstName";
+import CardSwiper from "AppLevelComponents/UI/CardSwiper";
+import { ImageBackground } from "react-native";
+import NoHorizontalMarginView from "AppLevelComponents/UI/NoHorizontalMarginView";
+import { widthPercentageToDP } from "react-native-responsive-screen";
 import CustomButton from "AppLevelComponents/UI/CustomButton";
+import CustomTextInput from "AppLevelComponents/UI/FormInputs/CustomTextInput";
+import RNSimData from "react-native-sim-data";
+import Header from "AppLevelComponents/UI/Header";
 import { withNavigation } from "react-navigation";
 
 class OnboardingUserProfile extends Component {
   componentDidMount() {}
 
-  constructor(props){
-      super(props)
-  
-      this.inputValObj = {}
-      
-    }
   verifyOTP() {}
-
-  selectUser(userType) {
-    this.props.scrollNext();
-  }
-
   render() {
     const { scrollPrev } = this.props;
     return (
@@ -47,29 +44,49 @@ class OnboardingUserProfile extends Component {
           style={{
             padding: global.contentPadding,
             paddingBottom: 0,
-            flex: 1,
+            borderBottomWidth: 1,
+            borderBottomColor: "#eee",
+            backgroundColor: "#FCFCFD",
           }}
         >
-          <Header onBack={() => scrollPrev()} title="Add Profile Details" />
-          <CustomText
-            text="Please Complete Your profile to Stay updated"
-            color="#444B65"
-            font={Fonts.semiBold}
-            size={18}
-            style={{ marginTop: 0, marginLeft: 4 }}
-          />
+          <Header onBack={() => scrollPrev()} title="Profile completion" />
 
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              marginTop:230,
               alignItems: "center",
+              justifyContent: "center",
+              paddingVertical: 40,
             }}
           >
-            <CustomTextInput  inputValueGetter={text => this.inputValObj.name = text} placeholder="Full Name" />
+            <Image
+              source={require("assets/img/otpImage.png")}
+              style={{ width: 250, height: 220 }}
+              resizeMode="contain"
+            />
+          </View>
+        </View>
+
+        <View
+          style={{
+            justifyContent: "center",
+            flex: 0.1,
+            padding:global.contentPadding,
+            alignItems: "center",
+          }}
+        >
+          <View style={{ flexDirection: "row" }}>
+            <CustomTextInput
+              inputValueGetter={(text) => (this.inputValObj.name = text)}
+              placeholder="Full Name"
+            />
             <View style={{ paddingHorizontal: 10 }} />
-            <CustomButton icon='check' press={() => {this.props.navigation.navigate('InsideApp');  } } round />
+            <CustomButton
+            
+              press={() => {
+                this.props.scrollNext();
+              }}
+              round
+            />
           </View>
         </View>
       </View>
@@ -85,14 +102,6 @@ const styles = {
     borderRadius: 14,
     fontSize: 17,
     height: 50,
-  },
-
-  userBtn: {
-    backgroundColor: "#040714",
-    flex: 1,
-    padding: global.contentPadding,
-    borderRadius: 15,
-    marginTop: 40,
   },
 };
 export default withNavigation(OnboardingUserProfile)
