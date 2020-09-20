@@ -132,7 +132,7 @@ class Dashboard extends Component {
     });
 
     return (
-      <View style={{}}>
+      <View style={{flex:1}}>
         <Animated.View
           style={{
             height: headerHeight,

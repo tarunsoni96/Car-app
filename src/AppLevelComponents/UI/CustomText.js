@@ -48,7 +48,7 @@ export default class CustomText extends Component {
                   fontSize:size || 17,
                   color: color || Colors.textPrimary,
                   top:-1,
-                  fontFamily: font ||Fonts.bold,
+                  // fontFamily: font ||Fonts.bold,
                   marginTop:marginTop || 0,
                   textAlign: textAlign ,
                   ...style
