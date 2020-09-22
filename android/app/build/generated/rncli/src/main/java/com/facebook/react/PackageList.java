@@ -26,6 +26,8 @@ import com.microsoft.appcenter.reactnative.appcenter.AppCenterReactNativePackage
 import com.microsoft.appcenter.reactnative.analytics.AppCenterReactNativeAnalyticsPackage;
 // appcenter-crashes
 import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
+// lottie-react-native
+import com.airbnb.android.react.lottie.LottiePackage;
 // react-native-code-push
 import com.microsoft.codepush.react.CodePush;
 // react-native-contacts
@@ -117,6 +119,7 @@ public class PackageList {
       new AppCenterReactNativePackage(getApplication()),
       new AppCenterReactNativeAnalyticsPackage(getApplication(), getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
       new AppCenterReactNativeCrashesPackage(getApplication(), getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
+      new LottiePackage(),
       new CodePush(getResources().getString(R.string.CodePushDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
       new ReactNativeContacts(),
       new FBSDKPackage(),

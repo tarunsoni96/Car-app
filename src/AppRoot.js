@@ -131,123 +131,14 @@ const ShortlistStack = createStackNavigator(
   }
 );
 
-const InsideApp = createMaterialBottomTabNavigator(
+
+const TopLevelNavigator = createAnimatedSwitchNavigator(
   {
-    Shortlist: {
-      screen: ShortlistStack,
-      navigationOptions: {
-        tabBarLabel: (
-          <CustomText
-            text="Shortlist"
-            color={colors["shortlist"]?.color || inactiveColor}
-            size={15}
-            font={colors["shortlist"]?.color ? Fonts.bold : Fonts.semiBold}
-          />
-        ),
-
-        tabBarOnPress: () => {
-          Keyboard.dismiss();
-          colors = [];
-          colors["shortlist"] = { color: activeColor };
-        },
-        tabBarIcon: () => (
-          <View>
-                    <Icons lib="AntDesign" name="hearto" />
-            
-
-            {/* <SvgUri
-            width={svgSize}
-            fill={colors['dash']?.color || inactiveColor}
-            height={svgSize}
-            svgXmlData={compass}
-          /> */}
-          </View>
-        ),
-      },
-    },
-
-    Dashboard: {
-      screen: DashboardStack,
-      navigationOptions: {
-        tabBarLabel: (
-          <CustomText
-            text="Schools"
-            color={Colors.textPrimary || inactiveColor}
-            size={15}
-            font={colors["dash"]?.color ? Fonts.bold : Fonts.semiBold}
-          />
-        ),
-
-        tabBarOnPress: () => {
-          Keyboard.dismiss();
-          colors = [];
-          colors["dash"] = { color: activeColor };
-        },
-        tabBarIcon: () => (
-          <View>
-            {/* <Image
-              source={require("assets/img/tutorsActive.png")}
-              style={{ width: tabIconSize, height: tabIconSize }}
-              resizeMode="contain"
-            /> */}
-
-            <SvgUri
-            width={svgSize}
-            fill={colors['dash']?.color || inactiveColor}
-            height={svgSize}
-            svgXmlData={logoSvg}
-          />
-          </View>
-        ),
-      },
-    },
-
-    Profile: {
-      screen: ProfileStack,
-      navigationOptions: {
-        tabBarLabel: (
-          <CustomText
-            text="Profile"
-            color={colors["profile"]?.color || inactiveColor}
-            size={15}
-            font={colors["profile"]?.color ? Fonts.bold : Fonts.semiBold}
-          />
-        ),
-        tabBarOnPress: () => {
-          Keyboard.dismiss();
-          colors = [];
-          colors["profile"] = { color: activeColor };
-        },
-        tabBarIcon: () => (
-          <View>
-            <Image
-              source={require("assets/img/tabProfile.png")}
-              style={{ width: tabIconSize, height: tabIconSize }}
-              resizeMode="contain"
-            />
-          </View>
-        ),
-      },
-    },
+    DashboardStack,
+    LoginStack,
   },
   {
-    initialRouteName: "Dashboard",
-    
-    tabBarOptions: {
-    },
-    barStyle: {
-      backgroundColor: "#fff",
-      paddingVertical: 20,
-    },
-  }
-);
-
-const switcher = createAnimatedSwitchNavigator(
-  {
-    InsideApp,
-    OnboardingStack,
-  },
-  {
+    //The previous screen will slide to the bottom while the next screen will fade in
     transition: (
       <Transition.Together>
         <Transition.Out
@@ -257,11 +148,141 @@ const switcher = createAnimatedSwitchNavigator(
         />
         <Transition.In type="slide-top" durationMs={transitionSpeed} />
       </Transition.Together>
-    ),
+    )
   }
 );
 
-const AppContainer = createAppContainer(switcher);
+// const InsideApp = createMaterialBottomTabNavigator(
+//   {
+//     Shortlist: {
+//       screen: ShortlistStack,
+//       navigationOptions: {
+//         tabBarLabel: (
+//           <CustomText
+//             text="Shortlist"
+//             color={colors["shortlist"]?.color || inactiveColor}
+//             size={15}
+//             font={colors["shortlist"]?.color ? Fonts.bold : Fonts.semiBold}
+//           />
+//         ),
+
+//         tabBarOnPress: () => {
+//           Keyboard.dismiss();
+//           colors = [];
+//           colors["shortlist"] = { color: activeColor };
+//         },
+//         tabBarIcon: () => (
+//           <View>
+//                     <Icons lib="AntDesign" name="hearto" />
+            
+
+//             {/* <SvgUri
+//             width={svgSize}
+//             fill={colors['dash']?.color || inactiveColor}
+//             height={svgSize}
+//             svgXmlData={compass}
+//           /> */}
+//           </View>
+//         ),
+//       },
+//     },
+
+//     Dashboard: {
+//       screen: DashboardStack,
+//       navigationOptions: {
+//         tabBarLabel: (
+//           <CustomText
+//             text="Schools"
+//             color={Colors.textPrimary || inactiveColor}
+//             size={15}
+//             font={colors["dash"]?.color ? Fonts.bold : Fonts.semiBold}
+//           />
+//         ),
+
+//         tabBarOnPress: () => {
+//           Keyboard.dismiss();
+//           colors = [];
+//           colors["dash"] = { color: activeColor };
+//         },
+//         tabBarIcon: () => (
+//           <View>
+//             {/* <Image
+//               source={require("assets/img/tutorsActive.png")}
+//               style={{ width: tabIconSize, height: tabIconSize }}
+//               resizeMode="contain"
+//             /> */}
+
+//             <SvgUri
+//             width={svgSize}
+//             fill={colors['dash']?.color || inactiveColor}
+//             height={svgSize}
+//             svgXmlData={logoSvg}
+//           />
+//           </View>
+//         ),
+//       },
+//     },
+
+//     Profile: {
+//       screen: ProfileStack,
+//       navigationOptions: {
+//         tabBarLabel: (
+//           <CustomText
+//             text="Profile"
+//             color={colors["profile"]?.color || inactiveColor}
+//             size={15}
+//             font={colors["profile"]?.color ? Fonts.bold : Fonts.semiBold}
+//           />
+//         ),
+//         tabBarOnPress: () => {
+//           Keyboard.dismiss();
+//           colors = [];
+//           colors["profile"] = { color: activeColor };
+//         },
+//         tabBarIcon: () => (
+//           <View>
+//             <Image
+//               source={require("assets/img/tabProfile.png")}
+//               style={{ width: tabIconSize, height: tabIconSize }}
+//               resizeMode="contain"
+//             />
+//           </View>
+//         ),
+//       },
+//     },
+//   },
+//   {
+//     initialRouteName: "Dashboard",
+    
+//     tabBarOptions: {
+//     },
+//     barStyle: {
+//       backgroundColor: "#fff",
+//       paddingVertical: 20,
+//     },
+//   }
+// );
+
+// const switcher = createAnimatedSwitchNavigator(
+//   {
+//     InsideApp,
+//     OnboardingStack,
+//   },
+//   {
+//     transition: (
+//       <Transition.Together>
+//         <Transition.Out
+//           type="slide-top"
+//           durationMs={500}
+//           interpolation="easeIn"
+//         />
+//         <Transition.In type="slide-top" durationMs={transitionSpeed} />
+//       </Transition.Together>
+//     ),
+//   }
+// );
+
+const AppContainer = createAppContainer(TopLevelNavigator);
 
 export default class AppRoot extends Component {
   render() {

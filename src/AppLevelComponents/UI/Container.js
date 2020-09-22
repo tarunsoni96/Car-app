@@ -66,6 +66,7 @@ export default class Container extends Component {
             keyboardShouldPersistTaps="always"
             contentContainerStyle={[styles.contentFixed, { ...contentStyle }]}
             behavior="padding"
+            {...this.props}
           >
             
               {this.props.children}
@@ -120,14 +121,8 @@ export default class Container extends Component {
 
           {...this.props}
         >
-          <View
-            style={{
-              marginBottom: showGradient ? widthPercentageToDP(30) : 0,
-              flex: 1,
-            }}
-        >
+        
             {this.props.children}
-          </View>
         </KeyboardAwareScrollView>
         {/* <LinearGradient
     style={{position:'absolute', bottom:0, width:'100%', height:100}}

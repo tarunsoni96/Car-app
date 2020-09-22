@@ -43,10 +43,8 @@ class Header extends Component {
               width: "100%",
               position: hideBG ? undefined : "absolute",
               height: hideBG ? undefined : commonVal,
-              top: 0,
-              left: 0,
-              paddingTop:15,
-              paddingHorizontal: 14,
+              paddingTop:global.contentPadding,
+              paddingHorizontal: global.contentPadding,
               ...headerContainerStyle,
             }}
             source={!hideBG && require("assets/img/headerBG.png")}
@@ -73,7 +71,6 @@ class Header extends Component {
                 // font={Fonts.semiBold}
                 text={title || "Header Title"}
                 style={{
-                  marginLeft:7,
                   marginTop:12,
                   fontFamily:Fonts.semiBold,
                   color: "#040714",
@@ -99,7 +96,6 @@ class Header extends Component {
                     marginTop: 13,
                     color: "#9E9E9E",
                     marginLeft:2,
-
                     lineHeight: 23,
                     fontSize: widthPercentageToDP(4),
                   }}

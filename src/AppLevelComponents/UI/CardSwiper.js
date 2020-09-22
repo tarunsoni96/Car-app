@@ -29,28 +29,11 @@ export default class CardSwiper extends Component {
   render() {
     const { data } = this.props;
     return (
-      // <Carousel
-      //   containerCustomStyle={{ marginTop:20 }}
-      //   contentContainerStyle={{alignItems:'center'}}
-      //   contentContainerCustomStyle={{alignItems:'center'}}
-      //   ItemSeparatorComponent={ () => (<View style={{marginVertical:20}} />)}
-      //   ref={c => {this._carousel = c}}
-      //   lockScrollWhileSnapping
-      //   enableMomentum
-      //   vertical
-      //   inactiveSlideScale={1}
-      //   swipeThreshold={20000}
-      //   enableSnap={false}
-      //   data={data}
-      //   renderItem={this._renderItem}
-      //   sliderHeight={200}
-      //   itemHeight={420}
-      // />
+      
       <FlatList 
         data={this.state.data}
-        contentInsetAdjustmentBehavior='automatic'
         keyExtractor={(y, z) => z.toString()}
-        style={{alignSelf:'center',paddingTop:10,marginBottom:0,width:global.deviceWidth}}
+        style={{alignSelf:'center',paddingTop:10,marginBottom:20,width:global.deviceWidth}}
         // contentContainerStyle={{alignSelf:}}
         extraData={this.state}
         renderItem={this.renderItem}

@@ -7,6 +7,7 @@ INJECTED from /Users/techugo/pp/Car app /android/app/src/main/AndroidManifest.xm
 MERGED from /Users/techugo/pp/Car app /android/app/src/main/AndroidManifest.xml:1:1-88:12
 MERGED from [:react-native-firebase] /Users/techugo/pp/Car app /node_modules/react-native-firebase/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
 MERGED from [androidx.multidex:multidex:2.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/504cde26824073e81495f22b3d5f1b93/AndroidManifest.xml:17:1-22:12
+MERGED from [:lottie-react-native] /Users/techugo/pp/Car app /node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] /Users/techugo/pp/Car app /node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-sim-data] /Users/techugo/pp/Car app /node_modules/react-native-sim-data/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-webview] /Users/techugo/pp/Car app /node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-23:12
@@ -34,6 +35,7 @@ MERGED from [:react-native-image-picker] /Users/techugo/pp/Car app /node_modules
 MERGED from [:react-native-nested-scroll-view] /Users/techugo/pp/Car app /node_modules/react-native-nested-scroll-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-svg] /Users/techugo/pp/Car app /node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:2:1-13:12
+MERGED from [com.airbnb.android:lottie:3.4.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/9cf18c7b48d20a64e546fbde5f5e13e2/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/e386bbb3c744dfa4dc92a90ac38948d8/AndroidManifest.xml:17:1-24:12
 MERGED from [com.facebook.android:facebook-login:5.15.3] /Users/techugo/.gradle/caches/transforms-2/files-2.1/3a8e48459918f70d5d7a75e5d7289262/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-share:5.15.3] /Users/techugo/.gradle/caches/transforms-2/files-2.1/61c44bba0b7aa988a268b3f08bb9569a/AndroidManifest.xml:21:1-31:12
@@ -139,6 +141,8 @@ uses-permission#android.permission.INTERNET
 ADDED from /Users/techugo/pp/Car app /android/app/src/main/AndroidManifest.xml:3:5-67
 MERGED from [:react-native-firebase] /Users/techugo/pp/Car app /node_modules/react-native-firebase/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
 MERGED from [:react-native-firebase] /Users/techugo/pp/Car app /node_modules/react-native-firebase/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
+MERGED from [:lottie-react-native] /Users/techugo/pp/Car app /node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [:lottie-react-native] /Users/techugo/pp/Car app /node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-67
 MERGED from [:react-native-code-push] /Users/techugo/pp/Car app /node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
 MERGED from [:react-native-code-push] /Users/techugo/pp/Car app /node_modules/react-native-code-push/android/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-67
 MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/a1c85add5f08d4c61d0aa496257028c3/AndroidManifest.xml:24:5-67
@@ -235,6 +239,8 @@ MERGED from [:react-native-image-picker] /Users/techugo/pp/Car app /node_modules
 MERGED from [:react-native-image-picker] /Users/techugo/pp/Car app /node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-19:19
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:11:5-20
+MERGED from [com.airbnb.android:lottie:3.4.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/9cf18c7b48d20a64e546fbde5f5e13e2/AndroidManifest.xml:9:5-20
+MERGED from [com.airbnb.android:lottie:3.4.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/9cf18c7b48d20a64e546fbde5f5e13e2/AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/e386bbb3c744dfa4dc92a90ac38948d8/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/e386bbb3c744dfa4dc92a90ac38948d8/AndroidManifest.xml:22:5-20
 MERGED from [com.facebook.android:facebook-login:5.15.3] /Users/techugo/.gradle/caches/transforms-2/files-2.1/3a8e48459918f70d5d7a75e5d7289262/AndroidManifest.xml:28:5-29:19
@@ -421,6 +427,8 @@ MERGED from [:react-native-firebase] /Users/techugo/pp/Car app /node_modules/rea
 MERGED from [:react-native-firebase] /Users/techugo/pp/Car app /node_modules/react-native-firebase/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.multidex:multidex:2.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/504cde26824073e81495f22b3d5f1b93/AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/504cde26824073e81495f22b3d5f1b93/AndroidManifest.xml:20:5-43
+MERGED from [:lottie-react-native] /Users/techugo/pp/Car app /node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:lottie-react-native] /Users/techugo/pp/Car app /node_modules/lottie-react-native/src/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-reanimated] /Users/techugo/pp/Car app /node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] /Users/techugo/pp/Car app /node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-sim-data] /Users/techugo/pp/Car app /node_modules/react-native-sim-data/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
@@ -475,6 +483,8 @@ MERGED from [:react-native-svg] /Users/techugo/pp/Car app /node_modules/react-na
 MERGED from [:react-native-svg] /Users/techugo/pp/Car app /node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:7:5-9:41
+MERGED from [com.airbnb.android:lottie:3.4.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/9cf18c7b48d20a64e546fbde5f5e13e2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.airbnb.android:lottie:3.4.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/9cf18c7b48d20a64e546fbde5f5e13e2/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.material:material:1.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/e386bbb3c744dfa4dc92a90ac38948d8/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/e386bbb3c744dfa4dc92a90ac38948d8/AndroidManifest.xml:20:5-44
 MERGED from [com.facebook.android:facebook-login:5.15.3] /Users/techugo/.gradle/caches/transforms-2/files-2.1/3a8e48459918f70d5d7a75e5d7289262/AndroidManifest.xml:24:5-26:41

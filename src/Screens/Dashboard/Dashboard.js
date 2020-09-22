@@ -25,9 +25,10 @@ import CustomButton from "AppLevelComponents/UI/CustomButton";
 import { TouchableWithoutFeedback } from "react-native";
 import { SafeAreaView } from "react-native";
 import LottieHOC from "AppLevelComponents/UI/LottieHOC";
-
-const HEADER_EXPANDED_HEIGHT = 120;
-const HEADER_COLLAPSED_HEIGHT = 80;
+import { TouchableOpacity } from "react-native";
+import CustomTouchableOpacity from "AppLevelComponents/UI/CustomTouchableOpacity";
+const HEADER_MIN_HEIGHT = 0;
+const HEADER_MAX_HEIGHT = 130;
 
 let dummyTutors = [
   {
@@ -88,13 +89,14 @@ let dummyTutors = [
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+    this.scrollYAnimatedValue = new Animated.Value(0);
+    this.scrollDiffClamp = new Animated.diffClamp(this.scrollYAnimatedValue,HEADER_MIN_HEIGHT,HEADER_MAX_HEIGHT)
+      
 
     this.inputValObj = {};
     this.state = {
       isApiCall: true,
       showWhiteInput: true,
-      
-      scrollY: new Animated.Value(0),
     };
   }
 
@@ -104,7 +106,7 @@ class Dashboard extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({isApiCall:false})  
+      this.setState({ isApiCall: false });
     }, 2400);
   }
 
@@ -124,31 +126,98 @@ class Dashboard extends Component {
   }
 
   render() {
-    const headerHeight = this.state.scrollY.interpolate({
-      inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
-      outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
+    const headerHeight = this.scrollDiffClamp.interpolate({
+      inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
+      outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
       extrapolate: "clamp",
     });
 
-    const headerFontSize = this.state.scrollY.interpolate({
-      inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
-      outputRange: [30, 20],
+    const headerPadding = this.scrollDiffClamp.interpolate({
+      inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
+      outputRange: [global.contentPadding, 0],
       extrapolate: "clamp",
+      
     });
+
+    const headerShadow = this.scrollYAnimatedValue.interpolate({
+      inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
+      outputRange: [0, 40],
+      extrapolate: "clamp",
+      
+    });
+
+    const headerBorder = this.scrollDiffClamp.interpolate({
+      inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
+      outputRange: [20, 0],
+      extrapolate: "clamp",
+      
+    });
+
+
+    
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1,backgroundColor:'#F8FAF9' }}>
+        <Container
+          safeAreaColor={Colors.screenBG}
+          showHeader={false}
+          scrollEventThrottle={8}
+          contentContainerStyle={{
+            paddingTop: HEADER_MAX_HEIGHT,
+            alignItems: "center",
+          }}
+          onScroll={Animated.event([
+            {
+              nativeEvent: { contentOffset: { y: this.scrollYAnimatedValue } },
+            },
+          ])}
+        >
+          <NoHorizontalMarginView
+            verticalAlso
+            style={{
+              width: global.deviceWidth,
+              padding: global.contentPadding,
+              alignItems: "center",
+              justifyContent: "center",
+              paddingBottom: 0,
+              flex: 1,
+              backgroundColor: "#F8FAF9",
+            }}
+          >
+            <NetworkAwareContent
+              isApiCall={this.state.isApiCall}
+              data={dummyTutors}
+              showLottie
+            >
+              <CardSwiper
+                setRef={(ref) => (this.caraousal = ref)}
+                data={dummyTutors}
+              />
+            </NetworkAwareContent>
+          </NoHorizontalMarginView>
+        </Container>
+
         <Animated.View
           style={{
             backgroundColor: "#F8FAF9",
-            // alignItems:'center',
+            height: headerHeight,
+            width: "100%",
             justifyContent: "center",
-            padding: global.contentPadding,
+            padding: headerPadding,
+            position: "absolute",
+            left: 0,
+            right: 0,
+            borderBottomLeftRadius: headerBorder,
+            borderBottomRightRadius:headerBorder,
+            elevation:headerShadow,
+            opacity:headerHeight,
+            alignItems: "center",
           }}
         >
           <View
             style={{
               flexDirection: "row",
+              width:'100%',
               alignItems: "center",
               justifyContent: "space-between",
             }}
@@ -160,20 +229,15 @@ class Dashboard extends Component {
                   fontSize: 26,
                   fontFamily: Fonts.semiBold,
                 }}
-                title="Schools."
+                title="Tutors"
                 hideBack
               />
-              <CustomText text="40 tutors nearby" size={19} marginTop={10} />
-            </View>
-            <TouchableWithoutFeedback
-              onPress={() => this.props.navigation.navigate("OnboardingStack")}
-            >
               <View
                 style={{
-                  alignItems: "center",
                   flexDirection: "row",
-                  flex: 1,
-                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  marginLeft: -5,
+                  marginTop: 14,
                 }}
               >
                 <Image
@@ -187,45 +251,36 @@ class Dashboard extends Component {
                   color="#444B65"
                 />
               </View>
+            </View>
+            <TouchableWithoutFeedback
+              onPress={() => this.props.navigation.navigate("OnboardingStack")}
+            >
+              <View
+                style={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <CustomTouchableOpacity isIcon onPress={() => alert("")}>
+                  <Icons lib="FontAwesome" name="sliders" />
+                </CustomTouchableOpacity>
+
+                <CustomTouchableOpacity isIcon onPress={() => alert("")}>
+                  <Icons
+                    lib="FontAwesome"
+                    name="heart-o"
+                    style={{ marginHorizontal: 6 }}
+                  />
+                </CustomTouchableOpacity>
+
+                <CustomTouchableOpacity isIcon onPress={() => alert("")}>
+                  <Icons lib="FontAwesome" name="user-o" />
+                </CustomTouchableOpacity>
+              </View>
             </TouchableWithoutFeedback>
           </View>
         </Animated.View>
-
-        <Container
-          safeAreaColor={Colors.screenBG}
-          showHeader={false}
-          onScroll={Animated.event([
-            {
-              nativeEvent: {
-                contentOffset: {
-                  y: this.state.scrollY,
-                },
-              },
-            },
-          ])}
-          scrollEventThrottle={16}
-        >
-          <NoHorizontalMarginView
-            verticalAlso
-            style={{
-              width: global.deviceWidth,
-              padding: global.contentPadding,
-              alignItems:'center',
-              justifyContent:'center',
-              paddingBottom: 0,
-              flex:0.7,
-              backgroundColor: "#F8FAF9",
-            }}
-           >
-          <NetworkAwareContent isApiCall={this.state.isApiCall} data={dummyTutors} showLottie >
-
-            <CardSwiper
-              setRef={(ref) => (this.caraousal = ref)}
-              data={dummyTutors}
-            />
-          </NetworkAwareContent>
-          </NoHorizontalMarginView>
-        </Container>
       </SafeAreaView>
     );
   }

@@ -19,16 +19,16 @@ public final class R {
     public static final class attr {
         private attr() {}
 
-        public static final int wheel_data = 0x7f040222;
-        public static final int wheel_direction = 0x7f040223;
-        public static final int wheel_item_count = 0x7f040224;
-        public static final int wheel_item_index = 0x7f040225;
-        public static final int wheel_item_same_size = 0x7f040226;
-        public static final int wheel_item_space = 0x7f040227;
-        public static final int wheel_style = 0x7f040228;
-        public static final int wheel_text_color = 0x7f040229;
-        public static final int wheel_text_color_current = 0x7f04022a;
-        public static final int wheel_text_size = 0x7f04022b;
+        public static final int wheel_data = 0x7f040232;
+        public static final int wheel_direction = 0x7f040233;
+        public static final int wheel_item_count = 0x7f040234;
+        public static final int wheel_item_index = 0x7f040235;
+        public static final int wheel_item_same_size = 0x7f040236;
+        public static final int wheel_item_space = 0x7f040237;
+        public static final int wheel_style = 0x7f040238;
+        public static final int wheel_text_color = 0x7f040239;
+        public static final int wheel_text_color_current = 0x7f04023a;
+        public static final int wheel_text_size = 0x7f04023b;
     }
     public static final class color {
         private color() {}
@@ -54,14 +54,14 @@ public final class R {
         private id() {}
 
         public static final int curved = 0x7f090074;
-        public static final int horizontal = 0x7f09009c;
-        public static final int straight = 0x7f09010e;
-        public static final int vertical = 0x7f09013e;
+        public static final int horizontal = 0x7f09009d;
+        public static final int straight = 0x7f090113;
+        public static final int vertical = 0x7f090143;
     }
     public static final class styleable {
         private styleable() {}
 
-        public static final int[] AbstractWheelPicker = { 0x7f040222, 0x7f040223, 0x7f040224, 0x7f040225, 0x7f040226, 0x7f040227, 0x7f040228, 0x7f040229, 0x7f04022a, 0x7f04022b };
+        public static final int[] AbstractWheelPicker = { 0x7f040232, 0x7f040233, 0x7f040234, 0x7f040235, 0x7f040236, 0x7f040237, 0x7f040238, 0x7f040239, 0x7f04023a, 0x7f04023b };
         public static final int AbstractWheelPicker_wheel_data = 0;
         public static final int AbstractWheelPicker_wheel_direction = 1;
         public static final int AbstractWheelPicker_wheel_item_count = 2;

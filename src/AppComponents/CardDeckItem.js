@@ -4,6 +4,7 @@ import {
   Vibration,
   TouchableOpacity,
   View,
+  Animated,
   Image,
 } from "react-native";
 import CustomText from "AppLevelComponents/UI/CustomText";
@@ -11,6 +12,8 @@ import Container from "AppLevelComponents/UI/Container";
 import Fonts from "UIProps/Fonts";
 import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import HelperMethods from "Helpers/Methods";
+import LinearGradient from "react-native-linear-gradient";
+
 import SubHeader from "AppLevelComponents/UI/SubHeader";
 import * as Animatable from "react-native-animatable";
 import MobxStore from "StorageHelpers/MobxStore";
@@ -33,6 +36,8 @@ let borderRadius = 25;
 
 @observer
 class CardDeckItem extends Component {
+
+
   constructor(props) {
     super(props);
     this.icons = [];
@@ -171,7 +176,13 @@ class CardDeckItem extends Component {
                     }}
                   />
 
-                  <View style={styles.courseFee}>
+                  <LinearGradient
+                    useAngle={true}
+                    angle={180}
+                    angleCenter={{ x: 0.25, y: 0.70 }}
+                    colors={["#E7CD00", "#E7F100", "#FFE200"]}
+                    style={styles.courseFee}
+                  >
                     <View
                       style={{ flexDirection: "row", alignItems: "center" }}
                     >
@@ -179,10 +190,10 @@ class CardDeckItem extends Component {
                         text={`${"\u20B9"}2,000`}
                         color={Colors.textPrimary}
                         font={Fonts.bold}
-                        size={20}
+                        size={22}
                       />
                     </View>
-                  </View>
+                  </LinearGradient>
 
                   {this.renderStars()}
                 </ImageBackground>
@@ -244,7 +255,7 @@ class CardDeckItem extends Component {
                         <CustomText
                           text={" 15 days"}
                           color={Colors.textPrimary}
-                          font={Fonts.black}
+                          font={Fonts.semiBold}
                           size={18}
                         />
                       </View>
@@ -284,7 +295,9 @@ class CardDeckItem extends Component {
                                   : Colors.textPrimary
                               }
                               // font={Fonts.regular}
-                              style={{ marginLeft: 5 }}
+                              style={{
+                                marginLeft: 5,
+                              }}
                               size={18}
                             />
                           </View>
