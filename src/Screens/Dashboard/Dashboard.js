@@ -27,6 +27,8 @@ import { SafeAreaView } from "react-native";
 import LottieHOC from "AppLevelComponents/UI/LottieHOC";
 import { TouchableOpacity } from "react-native";
 import CustomTouchableOpacity from "AppLevelComponents/UI/CustomTouchableOpacity";
+import CustomBottomSheet from "AppLevelComponents/UI/CustomBottomSheet";
+import SortFilterBS from "AppComponents/SortFilterBS";
 const HEADER_MIN_HEIGHT = 0;
 const HEADER_MAX_HEIGHT = 130;
 
@@ -95,6 +97,7 @@ class Dashboard extends Component {
 
     this.inputValObj = {};
     this.state = {
+      getHeight:false,
       isApiCall: true,
       showWhiteInput: true,
     };
@@ -107,7 +110,7 @@ class Dashboard extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ isApiCall: false });
-    }, 2400);
+    }, 100);
   }
 
   setGlobalRef(ref) {
@@ -123,6 +126,11 @@ class Dashboard extends Component {
 
   onPressRight() {
     this.caraousal.snapToNext();
+  }
+
+  openFilters(){
+    this.rfSheetDuration.open()
+    this.setState({getHeight:true,},()=>this.setState({getHeight:true,}))
   }
 
   render() {
@@ -153,14 +161,12 @@ class Dashboard extends Component {
       
     });
 
-
-    
-
     return (
       <SafeAreaView style={{ flex: 1,backgroundColor:'#F8FAF9' }}>
         <Container
           safeAreaColor={Colors.screenBG}
           showHeader={false}
+          bounces={false}
           scrollEventThrottle={8}
           contentContainerStyle={{
             paddingTop: HEADER_MAX_HEIGHT,
@@ -266,7 +272,7 @@ class Dashboard extends Component {
                   <Icons lib="FontAwesome" name="sliders" />
                 </CustomTouchableOpacity>
 
-                <CustomTouchableOpacity isIcon onPress={() => alert("")}>
+                <CustomTouchableOpacity isIcon onPress={() => this.openFilters() }>
                   <Icons
                     lib="FontAwesome"
                     name="heart-o"
@@ -281,6 +287,16 @@ class Dashboard extends Component {
             </TouchableWithoutFeedback>
           </View>
         </Animated.View>
+
+        <CustomBottomSheet
+          duration
+          hideSave
+          onRef={(ref) => (this.rfSheetDuration = ref)}
+        >
+          <SortFilterBS getHeight={this.state.getHeight} heightGetter={h => this.setState({sheetHeight:h}) } />
+        </CustomBottomSheet>
+
+
       </SafeAreaView>
     );
   }

@@ -6,6 +6,7 @@ import Carousel from "react-native-snap-carousel";
 import 'Helpers/global'
 import { Colors } from "UIProps/Colors";
 import CustomText from "./CustomText";
+import Fonts from "UIProps/Fonts";
 
 let sliderWidth = 320
 export default class CardSwiper extends Component {
@@ -13,7 +14,9 @@ export default class CardSwiper extends Component {
     data:[]
   }
   renderItem = ({ item, index }) => {
-    
+      if(item.instituteName == 'EOD'){
+        return <CustomText text="End of list" font={Fonts.regular} style={{alignSelf:'center',marginBottom:10}}  size={18}  />
+      } 
       return <CardDeckItem removeItem={(i)=>this.removeItem(i)} index={index} key={index} item={item} />;
     } 
 

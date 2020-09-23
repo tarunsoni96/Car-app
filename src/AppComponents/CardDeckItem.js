@@ -31,13 +31,12 @@ import FirstName from "AppLevelComponents/UI/FormInputs/FirstName";
 import { ImageBackground } from "react-native";
 import CustomRadioButton from "AppLevelComponents/UI/CustomRadioButton";
 import CustomButton from "AppLevelComponents/UI/CustomButton";
+import CustomTouchableOpacity from "AppLevelComponents/UI/CustomTouchableOpacity";
 
 let borderRadius = 25;
 
 @observer
 class CardDeckItem extends Component {
-
-
   constructor(props) {
     super(props);
     this.icons = [];
@@ -116,7 +115,7 @@ class CardDeckItem extends Component {
     Vibration.vibrate(30);
     this.setState({ added: !this.state.added });
     this.view
-      .pulse(600)
+      .wobble(600)
       .then((endState) =>
         console.log(endState.finished ? {} : "bounce cancelled")
       );
@@ -157,7 +156,7 @@ class CardDeckItem extends Component {
                     uri:
                       "https://cnet2.cbsistatic.com/img/A9sobjTXrgz0s-7vqg0N9dy2M9U=/940x0/2020/01/15/8776e381-47d9-475a-bd6c-b19fc9f3c21d/ferrari.jpg",
                   }}
-                  style={{ width: "100%", height: 340, borderRadius }}
+                  style={{ width: "100%", height: 300, borderRadius }}
                   imageStyle={{
                     width: "100%",
                     height: "100%",
@@ -170,30 +169,57 @@ class CardDeckItem extends Component {
                   <View
                     style={{
                       flex: 1,
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
                       backgroundColor: "rgba(0,0,0,0.3)",
                       borderTopLeftRadius: borderRadius,
                       borderTopRightRadius: borderRadius,
                     }}
                   />
 
-                  <LinearGradient
-                    useAngle={true}
-                    angle={180}
-                    angleCenter={{ x: 0.25, y: 0.70 }}
-                    colors={["#E7CD00", "#E7F100", "#FFE200"]}
-                    style={styles.courseFee}
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: 15,
+                      paddingVertcal: 20,
+                    }}
                   >
-                    <View
-                      style={{ flexDirection: "row", alignItems: "center" }}
+                    <LinearGradient
+                      useAngle={true}
+                      angle={180}
+                      angleCenter={{ x: 0.25, y: 0.7 }}
+                      colors={["#E7CD00", "#E7F100", "#FFE200"]}
+                      style={styles.courseFee}
                     >
-                      <CustomText
-                        text={`${"\u20B9"}2,000`}
-                        color={Colors.textPrimary}
-                        font={Fonts.bold}
-                        size={22}
-                      />
-                    </View>
-                  </LinearGradient>
+                      <View
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                      >
+                        <CustomText
+                          text={`${"\u20B9"}2,000`}
+                          color={Colors.textPrimary}
+                          font={Fonts.bold}
+                          size={22}
+                        />
+                      </View>
+                    </LinearGradient>
+
+                    <Animatable.View
+                      ref={this.handleViewRef}
+                    >
+                      <CustomTouchableOpacity
+                        onPress={() => this.addToShortlist()}
+                      >
+                        <Icons
+                          lib={"AntDesign"}
+                          name={this.state.added ? "heart" : "hearto"}
+                          color={this.state.added ? Colors.accent : "#fff"}
+                        />
+                      </CustomTouchableOpacity>
+                    </Animatable.View>
+                  </View>
 
                   {this.renderStars()}
                 </ImageBackground>
@@ -266,42 +292,7 @@ class CardDeckItem extends Component {
                         <TouchableOpacity
                           style={{}}
                           onPress={() => this.addToShortlist()}
-                        >
-                          <View
-                            style={{
-                              flexDirection: "row",
-                              alignItems: "center",
-                              marginTop: 4,
-                            }}
-                          >
-                            <Icons
-                              size={16}
-                              lib={
-                                this.state.added ? "AntDesign" : "FontAwesome"
-                              }
-                              name={this.state.added ? "delete" : "angellist"}
-                              color={this.state.added ? "#BA2F50" : "#000"}
-                            />
-
-                            <CustomText
-                              text={
-                                this.state.added
-                                  ? "In shortlist"
-                                  : "Add to shortlist"
-                              }
-                              color={
-                                this.state.added
-                                  ? "#BA2F50"
-                                  : Colors.textPrimary
-                              }
-                              // font={Fonts.regular}
-                              style={{
-                                marginLeft: 5,
-                              }}
-                              size={18}
-                            />
-                          </View>
-                        </TouchableOpacity>
+                        />
                       </Animatable.View>
                     </View>
                   </View>
@@ -323,11 +314,8 @@ const styles = StyleSheet.create({
   },
 
   courseFee: {
-    position: "absolute",
-    left: 15,
     backgroundColor: Colors.accent,
     padding: 7,
-    top: 20,
     paddingHorizontal: 15,
     borderRadius: 20,
   },
