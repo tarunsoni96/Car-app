@@ -69,7 +69,7 @@ export default class CustomButton extends Component {
                 font={Fonts.semiBold}
                 text={text || "Button"}
                 size={wp(4.8)}
-                color="#fff"
+                color={Colors.buttonText}
               />
             }
               </>
@@ -98,7 +98,9 @@ const styles = EStyleSheet.create({
   btn: {
     borderRadius: 12,
     backgroundColor:Colors.buttonBG,
-    padding:10,
+    padding:14,
+    alignItems:'center',
+    justifyContent:'center',
     borderRadius:100
   },
 

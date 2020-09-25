@@ -5,7 +5,6 @@ import Container from "AppLevelComponents/UI/Container";
 import Fonts from "UIProps/Fonts";
 import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import HelperMethods from "../../Helpers/Methods";
-import SubHeader from "../../AppLevelComponents/UI/SubHeader";
 import MobxStore from "StorageHelpers/MobxStore";
 import { observer } from "mobx-react";
 

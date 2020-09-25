@@ -14,7 +14,6 @@ import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import HelperMethods from "Helpers/Methods";
 import LinearGradient from "react-native-linear-gradient";
 
-import SubHeader from "AppLevelComponents/UI/SubHeader";
 import * as Animatable from "react-native-animatable";
 import MobxStore from "StorageHelpers/MobxStore";
 import { observer } from "mobx-react";
@@ -191,7 +190,7 @@ class CardDeckItem extends Component {
                       useAngle={true}
                       angle={180}
                       angleCenter={{ x: 0.25, y: 0.7 }}
-                      colors={["#E7CD00", "#E7F100", "#FFE200"]}
+                      colors={["#E7CD00",  "#FFE200"]}
                       style={styles.courseFee}
                     >
                       <View
@@ -201,7 +200,7 @@ class CardDeckItem extends Component {
                           text={`${"\u20B9"}2,000`}
                           color={Colors.textPrimary}
                           font={Fonts.bold}
-                          size={22}
+                          size={20}
                         />
                       </View>
                     </LinearGradient>

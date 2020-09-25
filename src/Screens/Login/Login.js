@@ -15,7 +15,6 @@ import Password from "AppLevelComponents/UI/FormInputs/Password";
 import ScreenMemory from "AppLevelComponents/UI/ScreenMemory";
 import {login} from 'ServiceProviders/ApiCaller'
 import {storeUserInfo} from 'DataManagers/UserDataManager'
-import { UserInfoConsumer } from "../../AppLevelComponents/Contexts/CxtUserInfo";
 import AsyncStorageHandler from "../../StorageHelpers/AsyncStorageHandler";
 import Constants from "../../Helpers/Constants";
 

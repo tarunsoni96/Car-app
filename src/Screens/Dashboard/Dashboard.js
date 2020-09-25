@@ -7,7 +7,6 @@ import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import LinearGradient from "react-native-linear-gradient";
 import "Helpers/global";
 import HelperMethods from "../../Helpers/Methods";
-import SubHeader from "../../AppLevelComponents/UI/SubHeader";
 import MobxStore from "StorageHelpers/MobxStore";
 import { observer } from "mobx-react";
 import "Helpers/global";
@@ -108,9 +107,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isApiCall: false });
-    }, 100);
+   this.fetchData()
   }
 
   setGlobalRef(ref) {
@@ -131,6 +128,17 @@ class Dashboard extends Component {
   openFilters(){
     this.rfSheetDuration.open()
     this.setState({getHeight:true,},()=>this.setState({getHeight:true,}))
+  }
+
+  fetchData(appliedFilters){
+    
+    this.rfSheetDuration.close()
+    setTimeout(() => {
+      this.setState({isApiCall:true,appliedFilters})
+    }, 800);
+    setTimeout(() => {
+      this.setState({ isApiCall: false,appliedFilters });
+    }, 1000);
   }
 
   render() {
@@ -233,6 +241,8 @@ class Dashboard extends Component {
                 titleStyle={{
                   color: Colors.textPrimary,
                   fontSize: 26,
+                  margin:5,
+                  marginBottom:0,
                   fontFamily: Fonts.semiBold,
                 }}
                 title="Tutors"
@@ -252,6 +262,7 @@ class Dashboard extends Component {
                   resizeMode="contain"
                 />
                 <CustomText
+                onPress={()=>this.props.navigation.navigate('OnboardingStack')}
                   font={Fonts.semiBold}
                   text="Noida"
                   color="#444B65"
@@ -268,19 +279,26 @@ class Dashboard extends Component {
                   justifyContent: "space-between",
                 }}
               >
-                <CustomTouchableOpacity isIcon onPress={() => alert("")}>
+                <CustomTouchableOpacity isIcon onPress={() => this.openFilters()}>
                   <Icons lib="FontAwesome" name="sliders" />
                 </CustomTouchableOpacity>
 
-                <CustomTouchableOpacity isIcon onPress={() => this.openFilters() }>
+                <CustomTouchableOpacity isIcon onPress={() => this.props.navigation.navigate('Shortlists') }>
+                
                   <Icons
                     lib="FontAwesome"
                     name="heart-o"
                     style={{ marginHorizontal: 6 }}
                   />
+                  <View style={[styles.circle,{elevation:2,shadowColor: "#000",
+                      shadowOffset: { height: 1, width: 0 },
+                      shadowOpacity: 0.15,
+                      shadowRadius: 2,position:'absolute',top:0,right:3,backgroundColor:Colors.accent,width:20,height:20}]} >
+                  <CustomText text={'3'} />
+                </View>
                 </CustomTouchableOpacity>
 
-                <CustomTouchableOpacity isIcon onPress={() => alert("")}>
+                <CustomTouchableOpacity isIcon onPress={() => this.props.navigation.navigate("Profile") }>
                   <Icons lib="FontAwesome" name="user-o" />
                 </CustomTouchableOpacity>
               </View>
@@ -289,11 +307,11 @@ class Dashboard extends Component {
         </Animated.View>
 
         <CustomBottomSheet
-          duration
-          hideSave
+          // hideSave
+          closeOnDrag={this.state.closeOnDrag}
           onRef={(ref) => (this.rfSheetDuration = ref)}
         >
-          <SortFilterBS getHeight={this.state.getHeight} heightGetter={h => this.setState({sheetHeight:h}) } />
+          <SortFilterBS enableDragDown={()=>this.setState({closeOnDrag:true})} disableDragDown={()=>this.setState({closeOnDrag:false})} appliedFilters={this.state.appliedFilters} applyFilter={(state)=>this.fetchData(state)}  sheetCloser={(state)=>{ this.setState({appliedFilters:state}); this.rfSheetDuration.close(state);}} />
         </CustomBottomSheet>
 
 

@@ -9,7 +9,6 @@ import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import LinearGradient from "react-native-linear-gradient";
 
 import HelperMethods from "../../Helpers/Methods";
-import SubHeader from "../../AppLevelComponents/UI/SubHeader";
 import MobxStore from "StorageHelpers/MobxStore";
 import { observer } from "mobx-react";
 import "Helpers/global";
@@ -38,13 +37,10 @@ import { withNavigation } from "react-navigation";
 
   selectUser(userType){
     if(userType == 'Learner'){
-
-      this.props.navigation.navigate("InsideApp");
+      this.props.navigation.navigate("DashboardStack");
     } else {
       alert('in prog')
     }
-
-    
   }
 
   render() {
@@ -58,8 +54,7 @@ import { withNavigation } from "react-navigation";
             borderBottomWidth:1,
             borderBottomColor:'#eee',
             backgroundColor: "#FCFCFD",
-          }}
-        >
+          }}>
           <Header onBack={() => scrollPrev()} title="User selection" />
 
           <View

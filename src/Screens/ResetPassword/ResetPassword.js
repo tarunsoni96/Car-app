@@ -3,7 +3,6 @@ import { Text, View, StatusBar } from "react-native";
 import { withNavigation } from "react-navigation";
 import Container from "AppLevelComponents/UI/Container";
 import Header from "AppLevelComponents/UI/Header";
-import SubHeader from 'AppLevelComponents/UI/SubHeader';
 
 import Logo from "AppLevelComponents/UI/Logo";
 import HelperMethods from 'Helpers/Methods'

@@ -72,5 +72,7 @@ pod 'RCTTypeSafety',:path => '../node_modules/react-native/Libraries/TypeSafety'
 
   pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
 
+  pod 'rn-range-slider', :path => '../node_modules/rn-range-slider'
+
 end
 

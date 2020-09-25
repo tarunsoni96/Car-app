@@ -34,6 +34,7 @@ MERGED from [:react-native-image-crop-picker] /Users/techugo/pp/Car app /node_mo
 MERGED from [:react-native-image-picker] /Users/techugo/pp/Car app /node_modules/react-native-image-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-21:12
 MERGED from [:react-native-nested-scroll-view] /Users/techugo/pp/Car app /node_modules/react-native-nested-scroll-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-svg] /Users/techugo/pp/Car app /node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:rn-range-slider] /Users/techugo/pp/Car app /node_modules/rn-range-slider/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:2:1-13:12
 MERGED from [com.airbnb.android:lottie:3.4.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/9cf18c7b48d20a64e546fbde5f5e13e2/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.0.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/e386bbb3c744dfa4dc92a90ac38948d8/AndroidManifest.xml:17:1-24:12
@@ -481,6 +482,8 @@ MERGED from [:react-native-nested-scroll-view] /Users/techugo/pp/Car app /node_m
 MERGED from [:react-native-nested-scroll-view] /Users/techugo/pp/Car app /node_modules/react-native-nested-scroll-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-svg] /Users/techugo/pp/Car app /node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-svg] /Users/techugo/pp/Car app /node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:rn-range-slider] /Users/techugo/pp/Car app /node_modules/rn-range-slider/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:rn-range-slider] /Users/techugo/pp/Car app /node_modules/rn-range-slider/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.5] /Users/techugo/.gradle/caches/transforms-2/files-2.1/5a3e0531b864b6521ef6a094e40fe33a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.airbnb.android:lottie:3.4.0] /Users/techugo/.gradle/caches/transforms-2/files-2.1/9cf18c7b48d20a64e546fbde5f5e13e2/AndroidManifest.xml:5:5-7:41

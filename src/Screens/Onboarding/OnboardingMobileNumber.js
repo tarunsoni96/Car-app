@@ -7,7 +7,6 @@ import NetworkAwareContent from "AppLevelComponents/UI/NetworkAwareContent";
 import LinearGradient from "react-native-linear-gradient";
 
 import HelperMethods from "../../Helpers/Methods";
-import SubHeader from "../../AppLevelComponents/UI/SubHeader";
 import MobxStore from "StorageHelpers/MobxStore";
 import { observer } from "mobx-react";
 import "Helpers/global";

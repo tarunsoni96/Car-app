@@ -41,10 +41,8 @@ class Header extends Component {
           <ImageBackground
             style={{
               width: "100%",
-              position: hideBG ? undefined : "absolute",
-              height: hideBG ? undefined : commonVal,
               paddingTop:global.contentPadding,
-              paddingHorizontal: global.contentPadding,
+              paddingHorizontal: global.contentPadding- 5,
               ...headerContainerStyle,
             }}
             source={!hideBG && require("assets/img/headerBG.png")}
@@ -53,7 +51,7 @@ class Header extends Component {
             <View style={styles.headerTop}>
             {!hideBack ? 
                     
-              <TouchableOpacity style={{width:40,height:40,}}  onPress={() => onBack ? onBack() : this.props.navigation.pop()}>
+              <TouchableOpacity style={{alignItems:'center',justifyContent:'center',}}  onPress={() => onBack ? onBack() : this.props.navigation.pop()}>
 
                   <Icons
                     lib="Entypo"
@@ -72,6 +70,7 @@ class Header extends Component {
                 text={title || "Header Title"}
                 style={{
                   marginTop:12,
+                  margin:9,
                   fontFamily:Fonts.semiBold,
                   color: "#040714",
                   fontSize: 26,

@@ -68,6 +68,8 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 // react-native-wheel-datepicker
 import com.zyu.ReactNativeWheelPickerPackage;
+// rn-range-slider
+import com.ashideas.rnrangeslider.RangeSliderPackage;
 
 public class PackageList {
   private Application application;
@@ -139,7 +141,8 @@ public class PackageList {
       new SvgPackage(),
       new VectorIconsPackage(),
       new RNCWebViewPackage(),
-      new ReactNativeWheelPickerPackage()
+      new ReactNativeWheelPickerPackage(),
+      new RangeSliderPackage()
     ));
   }
 }

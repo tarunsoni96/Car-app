@@ -23,7 +23,6 @@ import {
 import Login from "Screens/Login/Login";
 import ForgotPassword from "Screens/ForgotPassword/ForgotPassword";
 import ResetPassword from "Screens/ResetPassword/ResetPassword";
-import Shopping from "Screens/Shopping/Shopping";
 import Summary from "Screens/Summary/Summary";
 import DashboardDesign from "Screens/Dashboard/Dashboard";
 import MobileScreen from "Screens/Onboarding/Onboarding";
@@ -34,6 +33,7 @@ import Fonts from "UIProps/Fonts";
 import Profile from "Screens/Profile/Profile";
 import logoSvg from 'assets/img/logoSvg.svg'
 import SvgUri from "react-native-svg-uri";
+import Shortlists from "Screens/Shortlists/Shortlists";
 
 let transitionSpeed = 650;
 let tabIconSize = 27;
@@ -104,6 +104,8 @@ const OnboardingStack = createStackNavigator(
 const DashboardStack = createStackNavigator(
   {
     DashboardDesign,
+    Profile,
+    Shortlists
   },
   {
     headerMode: "none",
@@ -135,7 +137,7 @@ const ShortlistStack = createStackNavigator(
 const TopLevelNavigator = createAnimatedSwitchNavigator(
   {
     DashboardStack,
-    LoginStack,
+    OnboardingStack,
   },
   {
     //The previous screen will slide to the bottom while the next screen will fade in

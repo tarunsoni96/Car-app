@@ -6,7 +6,6 @@ import PushNotification from './src/ServiceProviders/PushNotfication';
 import HelperMethods from 'Helpers/Methods';
 import { MenuProvider } from 'react-native-popup-menu';
 
-import {UserInfoProvider} from './src/AppLevelComponents/Contexts/CxtUserInfo';
 class App extends Component {
   componentDidMount() {
     SplashScreen.hide();
@@ -14,13 +13,11 @@ class App extends Component {
   }
   render() {
     return (
-        <UserInfoProvider>
         <MenuProvider>
 
           <AppRoot />
           <PushNotification />
         </MenuProvider>
-        </UserInfoProvider>
     );
   }
 }

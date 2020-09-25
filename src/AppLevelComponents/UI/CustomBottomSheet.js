@@ -10,6 +10,7 @@ import HelperMethods from "Helpers/Methods";
 import Loader from "./Loader";
 import { withNavigation } from "react-navigation";
 import CustomText from "./CustomText";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 class CustomBottomSheet extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +35,7 @@ class CustomBottomSheet extends Component {
   }
   render() {
     let customH = 0
-    const { height,hideSave,duration,headerBtnStyle,saveText,cancelText,cancelColor } = this.props;
+    const { height,closeOnDrag,duration,headerBtnStyle,saveText,cancelText,cancelColor } = this.props;
 
     if(HelperMethods.isPlatformIos()){
       customH = duration ? (HelperMethods.isIphoneXorAbove() ? widthPercentageToDP(100) : widthPercentageToDP(110)) : widthPercentageToDP(height)
@@ -47,36 +48,11 @@ class CustomBottomSheet extends Component {
           this.RBSheet = ref;
         }}
         openDuration={250}
-        closeOnDragDown={true}
+        closeOnDragDown={false}
         closeOnPressMask={true}
       >
-      {hideSave ? 
-      null
-      :
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginHorizontal: global.contentPadding,
-            justifyContent: "space-between",
-            ...headerBtnStyle
-          }}
-        >
-          <SaveButton
-            onPress={() => this.RBSheet.close()}
-            text={cancelText || "Cancel"}
-            color={cancelColor || "#212121"}
-          />
-
-          <View style={{paddingHorizontal:8}} />
-          <SaveButton text={saveText || undefined} onPress={() => this.RBSheet.close()} />
-        </View>
-      }
-
-      <View>
 
         {this.props.children}
-      </View>
       </RBSheet>
     );
   }
